@@ -1,0 +1,41 @@
+---
+import logo_with_text from '';
+---
+
+<style>
+    .grid-cols-custom {
+      grid-template-columns: 1fr auto 1fr; /* This makes the side columns take up equal space, regardless of content, while the center column takes the width of the content */
+    }
+  </style>
+  
+<nav class="mt-2">
+    <div class="hidden xl:grid grid-flow-col auto-cols-max justify-center items-center gap-4 h-32 grid-cols-custom">
+        <div class="flex justify-center space-x-12 sm:space-x-14 md:space-x-16 lg:space-x-18">
+            <!-- Left content here -->
+            <a href="/" class="text-2xl hover:scale-110 transition text-ieee-blue font-bold">Home</a>
+            <a href="/" class="text-2xl text-ieee-blue font-bold">About Us</a>
+            <a href="/" class="text-2xl text-ieee-blue font-bold">Project Space</a>
+            <!-- You can add more items here, and they will be centered -->
+        </div>
+
+        <!-- Centered image -->
+        <div class="flex justify-center">
+            <img src="/icons/logo_with_text.svg" alt="description of image" class="h-24" />
+        </div>
+
+        <div class="flex justify-center space-x-4 sm:space-x-6 md:space-x-8 lg:space-x-12">
+            <!-- Right content here -->
+            <a href="/" class="text-2xl text-ieee-blue font-bold">Events</a>
+            <a href="/" class="text-2xl text-ieee-blue font-bold">Projects</a>
+            <a href="/" class="text-2xl text-ieee-blue font-bold">Contact Us</a>
+            <!-- You can add more items here, and they will be centered -->
+        </div>
+    </div>
+    <div class="grid xl:hidden items-center h-32" >
+        <div class="flex justify-left">
+            <img src="/icons/logo_with_full_text.svg" alt="description of image" class="h-24 scale-50" />
+        </div>
+    </div>
+</nav>
+
+  
