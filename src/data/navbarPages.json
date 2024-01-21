@@ -1,6 +1,22 @@
 [
     {
-        "name": "Google",
-        "url": "https://www.google.com"
+        "name": "Home",
+        "url": "/"
+    },
+    {
+        "name": "Events",
+        "url": "/events"
+    },
+    {
+        "name": "Projects",
+        "url": "/projects"
+    },
+    {
+        "name": "Committees",
+        "url": "/committees"
+    },
+    {
+        "name": "Contact Us",
+        "url": "/contactus"
     }
 ]
