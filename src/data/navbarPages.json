@@ -1,22 +1,22 @@
 [
     {
-        "name": "Home",
+        "name": "HOME",
         "url": "/"
     },
     {
-        "name": "Events",
+        "name": "EVENTS",
         "url": "/events"
     },
     {
-        "name": "Projects",
+        "name": "PROJECTS",
         "url": "/projects"
     },
     {
-        "name": "Committees",
+        "name": "COMMITTEES",
         "url": "/committees"
     },
     {
-        "name": "Contact Us",
-        "url": "/contactus"
+        "name": "CONTACT US",
+        "url": "/contact"
     }
 ]
