@@ -1,0 +1,24 @@
+---
+import navbarPages from "../data/navbarPages.json";
+---
+
+<div>
+    <nav class="bg-black flex justify-between items-center p-2">
+        <div class="h-20 flex items-center">
+            <img src="logos/ieeelogo_full.png" class="h-16" alt="IEEE Logo" />
+        </div>
+        <div class="flex items-center px-12">
+            {
+                navbarPages.map((page) => (
+                    <a
+                        href={page.url}
+                        class="text-white hover:text-gray-300 px-3 py-2 rounded-md  text-xl"
+                    >
+                        {page.name}
+                    </a>
+                ))
+            }
+            <!-- Add more menu items here with additional <a> tags -->
+        </div>
+    </nav>
+</div>
