@@ -22,8 +22,8 @@ import navbarPages from "../data/navbarPages.json";
             </ul>
         </nav>
         <nav
-            class="xl:hidden absolute top-[80px] w-full bg-black overflow-y-hidden transition-all duration-500 -translate-y-full z-0"
-            style="height: calc(100vh - 80px);"
+            class="xl:hidden absolute top-[75px] w-full bg-black overflow-y-hidden transition-all duration-500 -translate-y-full z-0"
+            style="height: calc(100vh - 75px);"
             id="secondNav"
         >
             <ul
@@ -57,17 +57,21 @@ import navbarPages from "../data/navbarPages.json";
 </div>
 
 <script>
-    var hamburger = document.querySelector(".hamburger");
+    var hamburger = document.querySelector(".hamburger") as HTMLButtonElement;
     var secondNav = document.querySelector("#secondNav");
     var navbarListItems = document.querySelectorAll("#navbar-list a");
 
     if (hamburger && secondNav && navbarListItems) {
         hamburger.addEventListener("click", function () {
+            hamburger.disabled = true;
+
             hamburger.classList.toggle("is-active");
 
             if (secondNav.classList.contains("-translate-y-full")) {
                 secondNav.classList.remove("-translate-y-full");
                 secondNav.classList.add("translate-y-0");
+
+                let lastItemIndex = navbarListItems.length - 1;
 
                 navbarListItems.forEach((item, index) => {
                     setTimeout(
@@ -75,18 +79,29 @@ import navbarPages from "../data/navbarPages.json";
                             let htmlItem = item as HTMLElement;
                             htmlItem.style.transition = "opacity 0.5s ease";
                             htmlItem.style.opacity = "1";
+
+                            if (index === lastItemIndex) {
+                                setTimeout(() => {
+                                    hamburger.disabled = false;
+                                }, 500);
+                            }
                         },
                         500 + index * 100
                     );
                 });
             } else {
-                navbarListItems.forEach((item) => {
+                navbarListItems.forEach((item, index) => {
                     let htmlItem = item as HTMLElement;
                     htmlItem.style.opacity = "0";
                 });
+
                 setTimeout(() => {
                     secondNav.classList.remove("translate-y-0");
                     secondNav.classList.add("-translate-y-full");
+
+                    setTimeout(() => {
+                        hamburger.disabled = false;
+                    }, 500);
                 }, 500);
             }
         });
