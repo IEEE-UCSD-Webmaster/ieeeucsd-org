@@ -3,7 +3,7 @@ import navbarPages from "../data/navbarPages.json";
 ---
 
 <div>
-    <div class="bg-black flex justify-between items-center">
+    <div class="bg-white flex justify-between items-center">
         <div class="h-20 flex items-center p-2 z-10 w-auto scale-[85%]">
             <img src="logos/ieeelogo_full.png" class="h-14" alt="IEEE Logo" />
         </div>
@@ -13,7 +13,7 @@ import navbarPages from "../data/navbarPages.json";
                     navbarPages.map((page) => (
                         <a
                             href={page.url}
-                            class="font-extrabold  text-ieee hover:text-gray-300 px-3 py-2 rounded-md text-xl"
+                            class=" font-extrabold text-ieee hover:text-gray-300 px-3 py-2 rounded-md text-2xl"
                         >
                             {page.name}
                         </a>
@@ -22,7 +22,7 @@ import navbarPages from "../data/navbarPages.json";
             </ul>
         </nav>
         <nav
-            class="xl:hidden absolute top-[75px] w-full bg-black overflow-y-hidden transition-all duration-500 -translate-y-full z-0"
+            class="xl:hidden absolute top-[75px] w-full bg-white overflow-y-hidden transition-all duration-500 -translate-y-full z-0"
             style="height: calc(100vh - 75px);"
             id="secondNav"
         >
@@ -34,7 +34,7 @@ import navbarPages from "../data/navbarPages.json";
                     navbarPages.map((page) => (
                         <a
                             href={page.url}
-                            class=" block font-extrabold text-xl text-ieee hover:text-gray-300 pb-10 rounded-md  opacity-0"
+                            class=" block font-extrabold text-2xl text-ieee hover:text-gray-300 pb-10 rounded-md  opacity-0"
                         >
                             {page.name}
                         </a>
