@@ -2,12 +2,16 @@
 import Navbar from "../components/Navbar.astro";
 import "../styles/hamburgers.scss";
 import "../styles/global.scss";
-
+import "iconify-icon";
 const { title, description, keywords, url, image } = Astro.props;
 ---
 
 <html>
-    <head> </head>
+    <head>
+        <script
+            src="https://code.iconify.design/iconify-icon/1.0.8/iconify-icon.min.js"
+        ></script>
+    </head>
 
     <body>
         <Navbar />

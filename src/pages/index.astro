@@ -4,15 +4,35 @@ import Layout from "../layouts/Layout.astro";
 
 <html lang="en">
     <Layout>
-        <div>
-            <div
-                class="bg-ieee h-[35em] rounded-b-[15%] my-auto flex items-center justify-center bg-blend-overlay bg-no-repeat bg-cover align-center bg-center"
-                style="background-image: url('/backgrounds/fa21qp.png');"
-            >
-                <div
-                    class="text-[3.2em] text-white font-bold text-center w-[11em]"
-                >
-                    The backbone of IEEE. Come help make a difference!
+        <div
+            class="bg-ieee h-[35em] rounded-b-[15%] my-auto flex flex-col items-center justify-center bg-blend-overlay bg-no-repeat bg-cover align-center bg-center"
+            style="background-image: url('/backgrounds/fa21qp.png');"
+        >
+            <div class="flex flex-col items-center justify-center text-center">
+                <div class="text-[3.2em] text-white font-bold mb-4 w-[11em]">
+                    Join the 2nd largest IEEE student branch in the US!
+                </div>
+                <div class="scale-[600%] mt-10 space-x-2">
+                    <a href="https://discord.gg/XxfjqZSjca">
+                        <iconify-icon
+                            icon="ic:baseline-discord"
+                            class="duration-500 transition hover:scale-125 scale-100 text-white hover:text-[#5562ea]"
+                        ></iconify-icon>
+                    </a>
+
+                    <a href="https://www.facebook.com/ieeeucsd">
+                        <iconify-icon
+                            icon="ic:baseline-facebook"
+                            class="duration-500 transition hover:scale-125 scale-100 text-white hover:text-[#0863f7]"
+                        ></iconify-icon>
+                    </a>
+
+                    <a href="https://www.instagram.com/ieee.ucsd">
+                        <iconify-icon
+                            icon="mdi:instagram"
+                            class="duration-500 transition hover:scale-125 scale-100 text-white hover:text-[#ff68cd]"
+                        ></iconify-icon>
+                    </a>
                 </div>
             </div>
         </div>
