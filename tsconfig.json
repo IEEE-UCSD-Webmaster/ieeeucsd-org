@@ -1,5 +1,7 @@
 {
+    "extends": "astro/tsconfigs/base",
     "compilerOptions": {
         "allowSyntheticDefaultImports": true
-    }
+    },
+    "exclude": ["node_modules", "**/node_modules/*", ".vscode", "dist"]
 }
