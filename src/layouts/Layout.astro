@@ -1,8 +1,10 @@
 ---
 import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
 import "../styles/hamburgers.scss";
 import "../styles/global.scss";
 import "iconify-icon";
+import "@fontsource-variable/epilogue";
 const { title, description, keywords, url, image } = Astro.props;
 ---
 
@@ -13,9 +15,9 @@ const { title, description, keywords, url, image } = Astro.props;
         ></script>
     </head>
 
-    <body>
+    <body class="min-h-screen">
         <Navbar />
         <slot />
-        <footer></footer>
+        <Footer />
     </body>
 </html>

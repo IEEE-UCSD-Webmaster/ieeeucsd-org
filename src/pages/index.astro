@@ -4,15 +4,21 @@ import Layout from "../layouts/Layout.astro";
 
 <html lang="en">
     <Layout>
-        <div
-            class="bg-ieee h-[35em] rounded-b-[15%] my-auto flex flex-col items-center justify-center bg-blend-overlay bg-no-repeat bg-cover align-center bg-center"
-            style="background-image: url('/backgrounds/fa21qp.png');"
-        >
-            <div class="flex flex-col items-center justify-center text-center">
-                <div class="text-[3.2em] text-white font-bold mb-4 w-[11em]">
-                    Join the 2nd largest IEEE student branch in the US!
-                </div>
-                <div class="scale-[600%] mt-10 space-x-2">
+        <div class="flex flex-col">
+            <div
+                class="bg-ieee h-[35em] my-auto flex flex-col items-center justify-center bg-blend-overlay bg-no-repeat bg-cover align-center bg-center"
+                style="background-image: url('/backgrounds/fa21qp.png');"
+            >
+                <!-- BLUE BG -->
+                <div
+                    class="flex flex-col items-center justify-center text-center"
+                >
+                    <div
+                        class="text-[3.2em] text-white font-bold mb-4 w-[11em]"
+                    >
+                        Join the 2nd largest IEEE student branch in the US!
+                    </div>
+                    <!-- <div class="scale-[600%] mt-10 space-x-2">
                     <a href="https://discord.gg/XxfjqZSjca">
                         <iconify-icon
                             icon="ic:baseline-discord"
@@ -33,8 +39,138 @@ import Layout from "../layouts/Layout.astro";
                             class="duration-500 transition hover:scale-125 scale-100 text-white hover:text-[#ff68cd]"
                         ></iconify-icon>
                     </a>
+                </div> -->
+                </div>
+            </div>
+            <!-- Regular White BG -->
+            <div
+                class="bg-white h-[45em] flex flex-col items-center justify-center align-center bg-center"
+            >
+                <div class="text-ieee mb-4 text-[3.2em]">We are...</div>
+                <div class="text-black mb-4 text-[1.8em] w-[22em] text-center">
+                    A diverse engineering community seeking to empower students
+                    through hands-on projects, networking opportunities, and
+                    social events. Bonus points on having an open-access project
+                    studio!
+                </div>
+                <div class="text-black mb-4 text-[1.8em] w-[22em] text-center">
+                    The Institute of Electrical and Electronics Engineers (IEEE)
+                    UC San Diego student branch is the second largest student
+                    chapter in the world's largest professional organization. On
+                    the student level, we provide members with a plethora of
+                    ways to get involved!
+                </div>
+            </div>
+            <!-- BLUE BG -->
+            <div
+                class="bg-ieee h-[35em] my-auto flex flex-col items-center justify-center bg-blend-overlay bg-no-repeat bg-cover align-center bg-center"
+                style="background-image: url('/backgrounds/project_space.png');"
+            >
+                <!-- BLUE BG -->
+                <div
+                    class="flex flex-col items-center justify-center text-center"
+                >
+                    <div
+                        class="text-[3.2em] text-white font-bold mb-4 w-[11em]"
+                    >
+                        Join us at the Project Space!
+                    </div>
+                    <div
+                        class="text-white w-[22em] text-align-center text-[1.8em]"
+                    >
+                        The <a
+                            class="text-yellow-200 font-bold"
+                            href="https://maps.app.goo.gl/y4RwNCkoKBEHGHsv6"
+                            id="project-space-link">IEEE Project Space</a
+                        > is an open-access, collaborative space where students can
+                        do homework or get access to basic electronic tools such
+                        as soldering stations, breadboard components, and Arduino
+                        and Raspberry PI parts!
+                    </div>
+                    <!-- <div class="scale-[400%] mt-10 space-x-2">
+                    <a href="https://www.instagram.com/ieee.ucsd">
+                        <iconify-icon
+                            icon="mdi:calendar"
+                            class="duration-500 transition hover:scale-125 scale-100 text-white hover:text-gray-500"
+                        ></iconify-icon>
+                    </a>
+                </div> -->
+                </div>
+            </div>
+            <!-- Regular White BG -->
+            <div
+                class="bg-white h-[90em] 2xl:h-[50em] flex justify-center items-center"
+            >
+                <div
+                    class="flex flex-wrap 2xl:flex-nowrap justify-center gap-[10%] h-[90em] 2xl:h-[50em] max-w-6xl"
+                >
+                    <!-- Adjust the max-width as needed -->
+                    <!-- Calendar -->
+                    <div
+                        class="flex flex-col relative items-center justify-center"
+                    >
+                        <div
+                            class="text-center text-ieee mb-12 text-[1.8em] font-bold"
+                        >
+                            Each officer has their own OAH, which can be seen
+                            here:
+                        </div>
+                        <iframe
+                            src="https://calendar.google.com/calendar/embed?src=c_5c08a366ecd44f440431cb647cf9b390a2f62473b4d19c8c355b32a411225067%40group.calendar.google.com&ctz=America%2FLos_Angeles"
+                            style="border: 0"
+                            width="600"
+                            height="450"
+                            frameborder="0"
+                            scrolling="no"></iframe>
+                    </div>
+
+                    <!-- Map -->
+                    <div
+                        class="flex flex-col relative items-center justify-center"
+                    >
+                        <div
+                            class="text-center text-ieee mb-12 text-[1.8em] font-bold"
+                        >
+                            We are located in EBU1-4710, which can be seen here:
+                        </div>
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d418.8284043474777!2d-117.23570464239734!3d32.881580836136536!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80dc06c3689b4f99%3A0xdf55f97f07f34d4f!2sIrwin%20%26%20Joan%20Jacobs%20School%20of%20Engineering!5e0!3m2!1sen!2sus!4v1706156878486!5m2!1sen!2sus"
+                            width="600"
+                            height="450"
+                            style="border:0;"
+                            allowfullscreen=""
+                            loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"
+                        ></iframe>
+                    </div>
                 </div>
             </div>
         </div>
+
+        <style>
+            #project-space-link {
+                position: relative;
+                text-decoration: none;
+            }
+
+            #project-space-link::after {
+                content: "";
+                position: absolute;
+                width: 100%;
+                transform: scaleX(0);
+                height: 3px;
+                @apply rounded-md;
+                bottom: 0;
+                left: 0;
+                @apply bg-yellow-200;
+                transform-origin: bottom right;
+                transition: transform 0.25s ease-out;
+            }
+
+            #project-space-link:hover::after {
+                transform: scaleX(1);
+                transform-origin: bottom left;
+            }
+        </style>
     </Layout>
 </html>
