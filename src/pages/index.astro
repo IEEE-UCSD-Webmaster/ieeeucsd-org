@@ -6,7 +6,7 @@ import Layout from "../layouts/Layout.astro";
     <Layout>
         <div class="flex flex-col">
             <div
-                class="bg-ieee h-[35em] my-auto flex flex-col items-center justify-center bg-blend-overlay bg-no-repeat bg-cover align-center bg-center"
+                class="bg-ieee h-[35em] rounded-b-[10%] my-auto flex flex-col items-center justify-center bg-blend-overlay bg-no-repeat bg-cover align-center bg-center"
                 style="background-image: url('/backgrounds/fa21qp.png');"
             >
                 <!-- BLUE BG -->
@@ -63,7 +63,7 @@ import Layout from "../layouts/Layout.astro";
             </div>
             <!-- BLUE BG -->
             <div
-                class="bg-ieee h-[35em] my-auto flex flex-col items-center justify-center bg-blend-overlay bg-no-repeat bg-cover align-center bg-center"
+                class="bg-ieee h-[35em] my-auto rounded-t-[10%] rounded-b-[10%] flex flex-col items-center justify-center bg-blend-overlay bg-no-repeat bg-cover align-center bg-center"
                 style="background-image: url('/backgrounds/project_space.png');"
             >
                 <!-- BLUE BG -->
@@ -101,47 +101,46 @@ import Layout from "../layouts/Layout.astro";
             <div
                 class="bg-white h-[90em] 2xl:h-[50em] flex justify-center items-center"
             >
-                <div
-                    class="flex flex-wrap 2xl:flex-nowrap justify-center gap-[10%] h-[90em] 2xl:h-[50em] max-w-6xl"
-                >
-                    <!-- Adjust the max-width as needed -->
-                    <!-- Calendar -->
+                <div class="flex flex-wrap justify-center space-y-20">
                     <div
-                        class="flex flex-col relative items-center justify-center"
+                        class="flex flex-wrap justify-center items-center w-full px-4 lg:px-8"
                     >
+                        <!-- Calendar -->
                         <div
-                            class="text-center text-ieee mb-12 text-[1.8em] font-bold"
+                            class="flex flex-col items-center justify-center w-full lg:w-1/2 p-4"
                         >
-                            Each officer has their own OAH, which can be seen
-                            here:
+                            <div
+                                class="text-center text-ieee mb-12 text-[1.8em] font-bold"
+                            >
+                                Each officer has their own OAH, which can be
+                                seen here:
+                            </div>
+                            <iframe
+                                src="https://calendar.google.com/calendar/embed?src=c_5c08a366ecd44f440431cb647cf9b390a2f62473b4d19c8c355b32a411225067%40group.calendar.google.com&ctz=America%2FLos_Angeles"
+                                style="border: 0"
+                                class="w-full h-[450px] max-w-4xl"
+                                loading="lazy"></iframe>
                         </div>
-                        <iframe
-                            src="https://calendar.google.com/calendar/embed?src=c_5c08a366ecd44f440431cb647cf9b390a2f62473b4d19c8c355b32a411225067%40group.calendar.google.com&ctz=America%2FLos_Angeles"
-                            style="border: 0"
-                            width="600"
-                            height="450"
-                            frameborder="0"
-                            scrolling="no"></iframe>
-                    </div>
 
-                    <!-- Map -->
-                    <div
-                        class="flex flex-col relative items-center justify-center"
-                    >
+                        <!-- Map -->
                         <div
-                            class="text-center text-ieee mb-12 text-[1.8em] font-bold"
+                            class="flex flex-col items-center justify-center w-full lg:w-1/2 p-4"
                         >
-                            We are located in EBU1-4710, which can be seen here:
+                            <div
+                                class="text-center text-ieee mb-12 text-[1.8em] font-bold"
+                            >
+                                We are located in EBU1-4710, which can be seen
+                                here:
+                            </div>
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d418.8284043474777!2d-117.23570464239734!3d32.881580836136536!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80dc06c3689b4f99%3A0xdf55f97f07f34d4f!2sIrwin%20%26%20Joan%20Jacobs%20School%20of%20Engineering!5e0!3m2!1sen!2sus!4v1706156878486!5m2!1sen!2sus"
+                                class="w-full h-[450px] max-w-4xl"
+                                style="border: 0"
+                                allowfullscreen=""
+                                loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade"
+                            ></iframe>
                         </div>
-                        <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d418.8284043474777!2d-117.23570464239734!3d32.881580836136536!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80dc06c3689b4f99%3A0xdf55f97f07f34d4f!2sIrwin%20%26%20Joan%20Jacobs%20School%20of%20Engineering!5e0!3m2!1sen!2sus!4v1706156878486!5m2!1sen!2sus"
-                            width="600"
-                            height="450"
-                            style="border:0;"
-                            allowfullscreen=""
-                            loading="lazy"
-                            referrerpolicy="no-referrer-when-downgrade"
-                        ></iframe>
                     </div>
                 </div>
             </div>
