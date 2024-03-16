@@ -8,5 +8,8 @@ export default {
             },
         },
     },
+    "editor.quickSuggestions": {
+        strings: "on",
+    },
     plugins: [],
 };
