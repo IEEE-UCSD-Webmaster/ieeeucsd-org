@@ -11,6 +11,8 @@
     },
     "dependencies": {
         "@astrojs/check": "^0.4.1",
+        "@astrojs/preact": "^3.1.1",
+        "@astrojs/react": "^3.1.0",
         "@astrojs/tailwind": "^5.1.0",
         "@fontsource-variable/epilogue": "^5.0.9",
         "@fontsource-variable/josefin-sans": "^5.0.19",
@@ -18,7 +20,11 @@
         "@fontsource/open-sans": "^5.0.22",
         "@fontsource/vollkorn": "^5.0.18",
         "astro": "^4.1.2",
+        "framer-motion": "^11.0.14",
         "iconify-icon": "^1.0.8",
+        "preact": "^10.19.6",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
         "tailwindcss": "^3.4.1",
         "typescript": "^5.3.3"
     },
