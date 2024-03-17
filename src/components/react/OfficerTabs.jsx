@@ -4,6 +4,8 @@ import { AnimatePresence } from "framer-motion";
 
 const OfficerTabs = ({ officers }) => {
     const [selectedType, setSelectedType] = useState("All");
+    const [mustahsinClickCount, setMustahsinClickCount] = useState(0);
+    const [useMustahsinImage, setUseMustahsinImage] = useState(false);
 
     const uniqueTypes = [
         "All",
@@ -16,6 +18,15 @@ const OfficerTabs = ({ officers }) => {
             : officers.filter((officer) =>
                   officer.type?.includes(selectedType)
               );
+
+    const handleMustahsinClicked = () => {
+        const newCount = mustahsinClickCount + 1;
+        setMustahsinClickCount(newCount);
+
+        if (newCount >= 5) {
+            setUseMustahsinImage(true);
+        }
+    };
 
     return (
         <div>
@@ -40,7 +51,16 @@ const OfficerTabs = ({ officers }) => {
                 className="officers flex-row flex flex-wrap items-center justify-center space-x-16 p-12"
             >
                 {filteredOfficers.map((officer) => (
-                    <OfficerCard key={officer.email} {...officer} />
+                    <OfficerCard
+                        key={officer.email}
+                        {...officer}
+                        picture={
+                            useMustahsinImage
+                                ? "/officers/mustahsin.jpg"
+                                : officer.picture
+                        }
+                        onMustahsinClicked={handleMustahsinClicked}
+                    />
                 ))}
             </div>
         </div>
