@@ -1,0 +1,15 @@
+---
+import EventList from "../components/react/EventList.jsx";
+import Layout from "../layouts/Layout.astro";
+const CALENDAR_API_KEY = import.meta.env.CALENDAR_API_KEY;
+---
+
+<Layout>
+    <div
+        class="flex justify-center items-center font-medium text-ieee text-[2em] mt-6 mx-auto text-wrap text-center"
+    >
+        Here is our timeline for the IEEE UCSD events:
+    </div>
+
+    <EventList client:load CALENDAR_API_KEY={CALENDAR_API_KEY} />
+</Layout>
