@@ -55,11 +55,11 @@ import navbarPages from "../data/navbarPages.json";
         </div>
     </div>
 </div>
-
 <script>
     var hamburger = document.querySelector(".hamburger") as HTMLButtonElement;
     var secondNav = document.querySelector("#secondNav");
     var navbarListItems = document.querySelectorAll("#navbar-list a");
+    var body = document.body; // Get the body element
 
     if (hamburger && secondNav && navbarListItems) {
         hamburger.addEventListener("click", function () {
@@ -70,6 +70,9 @@ import navbarPages from "../data/navbarPages.json";
             if (secondNav.classList.contains("-translate-y-full")) {
                 secondNav.classList.remove("-translate-y-full");
                 secondNav.classList.add("translate-y-0");
+
+                // Disable scrolling on body
+                body.style.overflowY = "hidden"; // Prevent scrolling
 
                 let lastItemIndex = navbarListItems.length - 1;
 
@@ -101,6 +104,7 @@ import navbarPages from "../data/navbarPages.json";
 
                     setTimeout(() => {
                         hamburger.disabled = false;
+                        body.style.overflowY = "auto";
                     }, 500);
                 }, 500);
             }
