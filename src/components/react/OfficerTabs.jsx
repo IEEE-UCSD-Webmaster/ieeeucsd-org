@@ -48,7 +48,7 @@ const OfficerTabs = ({ officers }) => {
 
             <div
                 key={selectedType}
-                className="officers flex-row flex flex-wrap items-center justify-center space-x-16 p-12"
+                className="officers flex-row flex flex-wrap flex-none items-center justify-center p-12"
             >
                 {filteredOfficers.map((officer) => (
                     <OfficerCard

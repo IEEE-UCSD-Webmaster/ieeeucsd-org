@@ -9,12 +9,14 @@ const OfficerCard = ({
 }) => {
     const handleImageClick = () => {
         if (name === "Mustahsin Zarif") {
-            onMustahsinClicked(); // This function is to be provided by the parent component
+            onMustahsinClicked();
         }
     };
 
     return (
-        <div className={`flex flex-col items-center w-64 rounded-lg`}>
+        <div
+            className={`flex flex-col justify-center content-center mx-12 items-center w-64 rounded-lg`}
+        >
             <img
                 className="w-26 h-auto sm:h-64 object-cover rounded-3xl cursor-pointer"
                 src={picture}
