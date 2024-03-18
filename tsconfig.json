@@ -1,14 +1,9 @@
 {
-  "extends": "astro/tsconfigs/base",
-  "compilerOptions": {
-    "allowSyntheticDefaultImports": true,
-    "jsx": "react-jsx",
-    "jsxImportSource": "preact"
-  },
-  "exclude": [
-    "node_modules",
-    "**/node_modules/*",
-    ".vscode",
-    "dist"
-  ]
+    "extends": "astro/tsconfigs/base",
+    "compilerOptions": {
+        "allowSyntheticDefaultImports": true,
+        "jsx": "react-jsx",
+        "jsxImportSource": "preact"
+    },
+    "exclude": ["node_modules", "**/node_modules/*", ".vscode", "dist"]
 }
