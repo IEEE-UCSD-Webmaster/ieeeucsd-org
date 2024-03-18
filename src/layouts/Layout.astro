@@ -10,6 +10,8 @@ const { title, description, keywords, url, image } = Astro.props;
 
 <html>
     <head>
+        <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"
+        ></script>
         <script
             src="https://code.iconify.design/iconify-icon/1.0.8/iconify-icon.min.js"
         ></script>
@@ -28,7 +30,23 @@ const { title, description, keywords, url, image } = Astro.props;
         <div class="min-h-screen">
             <slot />
         </div>
-
         <Footer />
+        <script>
+            declare global {
+                interface Window {
+                    netlifyIdentity: any;
+                }
+            }
+
+            if (window.netlifyIdentity) {
+                window.netlifyIdentity.on("init", (user: any) => {
+                    if (!user) {
+                        window.netlifyIdentity.on("login", () => {
+                            document.location.href = "/admin/";
+                        });
+                    }
+                });
+            }
+        </script>
     </body>
 </html>
