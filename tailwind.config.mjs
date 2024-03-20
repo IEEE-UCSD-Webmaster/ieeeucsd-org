@@ -11,5 +11,5 @@ export default {
     "editor.quickSuggestions": {
         strings: "on",
     },
-    plugins: [],
+    plugins: [require("@tailwindcss/forms")],
 };
