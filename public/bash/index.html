@@ -1,0 +1,1461 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+    <link rel="stylesheet" href="dist/theme/blood.css">
+
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section data-transition="none">
+          <h2>
+            IEEE Bash Scripting
+          </h2>
+          <!--FIXME:Can't seem to get this to keep the prompt, so instead the inserted strings have it attached)-->
+          <pre><code data-no-escape id="BashSlide1"></code>
+           </pre>
+        </section>
+                <!--- 
+         _                              _  _          
+        |_  ._ | _.._  _._|_o _ ._   __|_ |_) _. _|_  
+        |_><|_)|(_|| |(_| |_|(_)| | (_)|  |_)(_|_>| | 
+            |                                         ---->
+        <section data-markdown data-transition="none">
+          <textarea data-template>
+            ## What is Bash?
+          </textarea>
+        </section>
+
+        <section data-markdown data-transition="none">
+          <textarea data-template>
+            ### Compiled vs Interpreted languagess
+            | Compiler | Interpreter |
+            | -------- | ----------- |
+            | "Compiles" down a program into binary (machine code) <!-- .element: class="fragment fade-right"   data-fragment-index="1" style="font-size:0.7em;" -->|  Does not save machine langauge <!-- .element: class="fragment fade-left"   data-fragment-index="1" style="font-size:0.7em;" -->|
+            | Must first compile a program into machine code before running <!-- .element: class="fragment fade-right"   data-fragment-index="2" style="font-size:0.7em;" -->| Interprets each line and executes each as it reads them <!-- .element: class="fragment fade-left"   data-fragment-index="2" style="font-size:0.7em;" -->|
+            | Tries to make use of the cpu it compiles a program for <!-- .element: class="fragment fade-right"   data-fragment-index="3" style="font-size:0.7em;" -->| Usually less finetuned for a CPU <!-- .element: class="fragment fade-left"   data-fragment-index="3" style="font-size:0.7em;" -->|
+            | Usually favored in production <!-- .element: class="fragment fade-right"   data-fragment-index="4" style="font-size:0.7em;" -->| Usually favored in development and programming environments <!-- .element: class="fragment fade-left"   data-fragment-index="4" style="font-size:0.7em;" -->|
+          </textarea>
+        </section>
+        <section data-markdown data-transition="none">
+          <textarea data-template>
+            ### Example Languages
+            | Compiled | Interpreted |
+            | -------- | ----------- |
+            | C/C++    <!-- .element: class="fragment fade-right"   data-fragment-index="1" -->| Python     <!-- .element: class="fragment fade-left"   data-fragment-index="1" --> | 
+            | Java    <!-- .element: style="visibility:hidden;" -->| JavaScript <!-- .element: style="visibility:hidden;" -->|
+            | Rust    <!-- .element: style="visibility:hidden;" -->| PHP        <!-- .element: style="visibility:hidden;" -->|
+            | Haskell <!-- .element: style="visibility:hidden;" -->| Ruby       <!-- .element: style="visibility:hidden;" -->|
+            - Bash is a 
+            command language <!-- .element:  style="visibility:hidden;"-->
+            *interpreter* <!-- .element: style="visibility:hidden;"-->
+          </textarea>
+        </section>
+
+
+
+        <!-- Compiled vs Interpreted Example -->
+				<section>
+          <section data-auto-animate  data-transition="none">
+            <h4>Compiled vs Interpreted Example</h2>
+            <div class="r-hstack">
+              <div class="r-vstack" style="width:35vw; height=1vw;">
+                <pre style="text-align: center;"><p id="c-example-dir" >program.c    <span class="fade-in" style="color:lightgreen;visibility:hidden;">program</span></p></pre>
+                <pre style="font-size:40%"><code data-line-numbers data-trim data-no-escape>#include &lt;stdio.h&gt;
+int main() {
+  int a = 36;
+  int b = 6;
+  printf("The answer to life, the universe,\
+  and everything: %d\n", a+b);
+  return 0;
+}
+                </code></pre>
+                <pre style="font-size:40%" data-id="code"><code class="hljs bash" data-trim>$ </code></pre>
+
+              </div>
+              <div class="r-vstack" style="width:35vw">
+                <pre style="text-align: center;"><p id="python-example-dir">program.py</p></pre>
+                <pre style="font-size:40%"><code data-id="python-example" data-line-numbers class="hljs">a = 36;
+b = 6;
+print("The answer to life, the universe,\
+ and everything: {}".format(a+b))
+                </code></pre>
+                <pre style="font-size:40%"><code data-id="python-example-cli" class="hljs">$</code></pre>
+              </div>
+            </div>
+          </section>
+
+          <section data-auto-animate  data-transition="none">
+            <h4>Compiled vs Interpreted Example</h2>
+            <div class="r-hstack">
+              <div class="r-vstack" style="width:35vw; height=1vw;">
+                <pre style="text-align: center;"><p id="c-example-dir" >program.c    <span class="fade-in" style="color:lightgreen;visibility:hidden;">program</span></p></pre>
+                <pre style="font-size:40%"><code data-line-numbers data-trim data-no-escape>#include &lt;stdio.h&gt;
+int main() {
+  int a = 36;
+  int b = 6;
+  printf("The answer to life, the universe,\
+  and everything: %d\n", a+b);
+  return 0;
+}
+                </code></pre>
+                <pre style="font-size:40%" data-id="code"><code class="hljs bash" data-trim>$ gcc program.c -o program</code></pre>
+
+              </div>
+              <div class="r-vstack" style="width:35vw">
+                <pre style="text-align: center;"><p id="python-example-dir">program.py</p></pre>
+                <pre style="font-size:40%"><code data-id="python-example" data-line-numbers class="hljs">a = 36;
+b = 6;
+print("The answer to life, the universe,\
+ and everything: {}".format(a+b))
+                </code></pre>
+                <pre style="font-size:40%"><code data-id="python-example-cli" class="hljs">$</code></pre>
+              </div>
+            </div>
+          </section>
+
+          <section data-auto-animate  data-transition="none">
+            <h4>Compiled vs Interpreted Example</h2>
+            <div class="r-hstack">
+              <div class="r-vstack" style="width:35vw; height=1vw;">
+                <pre style="text-align: center;"><p id="c-example-dir" >program.c    <span class="fade-in" style="color:lightgreen">program</span></p></pre>
+                <pre style="font-size:40%"><code data-line-numbers data-trim data-no-escape>#include &lt;stdio.h&gt;
+int main() {
+  int a = 36;
+  int b = 6;
+  printf("The answer to life, the universe,\
+  and everything: %d\n", a+b);
+  return 0;
+}
+                </code></pre>
+                <pre style="font-size:40%" data-id="code"><code class="hljs bash" data-trim>$ gcc program.c -o program
+$ </code></pre>
+
+              </div>
+              <div class="r-vstack" style="width:35vw">
+                <pre style="text-align: center;"><p id="python-example-dir">program.py</p></pre>
+                <pre style="font-size:40%"><code data-id="python-example" data-line-numbers class="hljs">a = 36;
+b = 6;
+print("The answer to life, the universe,\
+ and everything: {}".format(a+b))
+                </code></pre>
+                <pre style="font-size:40%"><code data-id="python-example-cli" class="hljs">$ </code></pre>
+              </div>
+            </div>
+          </section>
+
+          <section data-auto-animate  data-transition="none">
+            <h4>Compiled vs Interpreted Example</h2>
+            <div class="r-hstack">
+              <div class="r-vstack" style="width:35vw; height=1vw;">
+                <pre style="text-align: center;"><p id="c-example-dir" >program.c    <span class="fade-in" style="color:lightgreen;">program</span></p></pre>
+                <pre style="font-size:40%"><code data-line-numbers data-trim data-no-escape>#include &lt;stdio.h&gt;
+int main() {
+  int a = 36;
+  int b = 6;
+  printf("The answer to life, the universe,\
+  and everything: %d\n", a+b);
+  return 0;
+}
+                </code></pre>
+                <pre style="font-size:40%" data-id="code"><code class="hljs shell" data-trim>$ gcc program.c -o program
+$ ./program</code></pre>
+
+              </div>
+              <div class="r-vstack" style="width:35vw">
+                <pre style="text-align: center;"><p id="python-example-dir">program.py</p></pre>
+                <pre style="font-size:40%"><code data-id="python-example" data-line-numbers class="hljs">a = 36;
+b = 6;
+print("The answer to life, the universe,\
+ and everything: {}".format(a+b))
+                </code></pre>
+                <pre style="font-size:40%"><code data-id="python-example-cli" class="hljs">$ </code></pre>
+              </div>
+            </div>
+          </section>
+
+          <section data-auto-animate  data-transition="none">
+            <h4>Compiled vs Interpreted Example</h2>
+            <div class="r-hstack">
+              <div class="r-vstack" style="width:35vw; height=1vw;">
+                <pre style="text-align: center;"><p id="c-example-dir" >program.c    <span class="fade-in" style="color:lightgreen;">program</span></p></pre>
+                <pre style="font-size:40%"><code data-line-numbers data-trim data-no-escape>#include &lt;stdio.h&gt;
+int main() {
+  int a = 36;
+  int b = 6;
+  printf("The answer to life, the universe,\
+  and everything: %d\n", a+b);
+  return 0;
+}
+                </code></pre>
+                <pre style="font-size:40%" data-id="code"><code class="hljs shell">$ gcc program.c -o program
+$ ./program
+The answer to life, the universe, and everything is 42
+$</code></pre>
+
+              </div>
+              <div class="r-vstack" style="width:35vw">
+                <pre style="text-align: center;"><p id="python-example-dir">program.py</p></pre>
+                <pre style="font-size:40%"><code data-id="python-example" data-line-numbers class="hljs">a = 36;
+b = 6;
+print("The answer to life, the universe,\
+ and everything: {}".format(a+b))
+                </code></pre>
+                <pre style="font-size:40%"><code data-id="python-example-cli">$ </code></pre>
+              </div>
+            </div>
+          </section>
+
+          <section data-auto-animate  data-transition="none">
+            <h4>Compiled vs Interpreted Example</h2>
+            <div class="r-hstack">
+              <div class="r-vstack" style="width:35vw; height=1vw;">
+                <pre style="text-align: center;"><p id="c-example-dir" >program.c    <span class="fade-in" style="color:lightgreen;">program</span></p></pre>
+                <pre style="font-size:40%"><code data-line-numbers data-trim data-no-escape>#include &lt;stdio.h&gt;
+int main() {
+  int a = 36;
+  int b = 6;
+  printf("The answer to life, the universe,\
+  and everything: %d\n", a+b);
+  return 0;
+}
+                </code></pre>
+                <pre style="font-size:40%" data-id="code"><code class="hljs shell">$ gcc program.c -o program
+$ ./program
+The answer to life, the universe, and everything is 42
+$</code></pre>
+
+              </div>
+              <div class="r-vstack" style="width:35vw">
+                <pre style="text-align: center;"><p id="python-example-dir">program.py</p></pre>
+                <pre style="font-size:40%"><code data-id="python-example" data-line-numbers class="hljs">a = 36;
+b = 6;
+print("The answer to life, the universe,\
+ and everything: {}".format(a+b))
+                </code></pre>
+                <pre style="font-size:40%"><code data-id="python-example-cli">$ python program.py</code></pre>
+              </div>
+            </div>
+          </section>
+
+          <section data-auto-animate  data-transition="none">
+            <h4>Compiled vs Interpreted Example</h2>
+            <div class="r-hstack">
+              <div class="r-vstack" style="width:35vw; height=1vw;">
+                <pre style="text-align: center;"><p id="c-example-dir" >program.c    <span class="fade-in" style="color:lightgreen;">program</span></p></pre>
+                <pre style="font-size:40%"><code data-line-numbers data-trim data-no-escape>#include &lt;stdio.h&gt;
+int main() {
+  int a = 36;
+  int b = 6;
+  printf("The answer to life, the universe,\
+  and everything: %d\n", a+b);
+  return 0;
+}
+                </code></pre>
+                <pre style="font-size:40%" data-id="code"><code class="hljs shell">$ gcc program.c -o program
+$ ./program
+The answer to life, the universe, and everything is 42
+$</code></pre>
+
+              </div>
+              <div class="r-vstack" style="width:35vw">
+                <pre style="text-align: center;"><p id="python-example-dir">program.py</p></pre>
+                <pre style="font-size:40%"><code data-id="python-example" class="hljs" data-line-numbers="1|2|3,4" data-trim>a = 36;
+b = 6;
+print("The answer to life, the universe,\
+ and everything: {}".format(a+b))
+                </code></pre>
+                <pre style="font-size:40%"><code data-id="python-example-cli">$ python program.py
+                </code></pre>
+              </div>
+            </div>
+          </section>
+
+          <section data-auto-animate  data-transition="none">
+            <h4>Compiled vs Interpreted Example</h2>
+            <div class="r-hstack">
+              <div class="r-vstack" style="width:35vw; height=1vw;">
+                <pre style="text-align: center;"><p id="c-example-dir" >program.c    <span class="fade-in" style="color:lightgreen;">program</span></p></pre>
+                <pre style="font-size:40%"><code data-line-numbers data-trim data-no-escape>#include &lt;stdio.h&gt;
+int main() {
+  int a = 36;
+  int b = 6;
+  printf("The answer to life, the universe,\
+  and everything: %d\n", a+b);
+  return 0;
+}
+                </code></pre>
+                <pre style="font-size:40%" data-id="code"><code class="hljs shell">$ gcc program.c -o program
+$ ./program
+The answer to life, the universe, and everything is 42
+$</code></pre>
+
+              </div>
+              <div class="r-vstack" style="width:35vw">
+                <pre style="text-align: center;"><p id="python-example-dir">program.py</p></pre>
+                <pre style="font-size:40%"><code data-id="python-example" class="hljs" data-line-numbers="3,4" data-trim>a = 36;
+b = 6;
+print("The answer to life, the universe,\
+ and everything: {}".format(a+b))
+                </code></pre>
+                <pre style="font-size:40%"><code data-id="python-example-cli">$ python program.py
+The answer to life, the universe, and everything: 42
+                </code></pre>
+              </div>
+            </div>
+          </section>
+
+          <section data-auto-animate  data-transition="none">
+            <h4>Compiled vs Interpreted Example</h2>
+            <div class="r-hstack">
+              <div class="r-vstack" style="width:35vw; height=1vw;">
+                <pre style="text-align: center;"><p id="c-example-dir" >program.c    <span class="fade-in" style="color:lightgreen;">program</span></p></pre>
+                <pre style="font-size:40%"><code data-line-numbers data-trim data-no-escape>#include &lt;stdio.h&gt;
+int main() {
+  int a = 36;
+  int b = 6;
+  printf("The answer to life, the universe,\
+  and everything: %d\n", a+b);
+  return 0;
+}
+                </code></pre>
+                <pre style="font-size:40%" data-id="code"><code class="hljs shell">$ gcc program.c -o program
+$ ./program
+The answer to life, the universe, and everything is 42
+$</code></pre>
+
+              </div>
+              <div class="r-vstack" style="width:35vw">
+                <pre style="text-align: center;"><p id="python-example-dir">program.py</p></pre>
+                <pre style="font-size:40%"><code data-id="python-example" class="hljs" data-line-numbers data-trim>a = 36;
+b = 6;
+print("The answer to life, the universe,\
+ and everything: {}".format(a+b))
+                </code></pre>
+                <pre style="font-size:40%"><code data-id="python-example-cli">$ python program.py
+The answer to life, the universe, and everything: 42
+$</code></pre>
+              </div>
+            </div>
+          </section>
+
+        </section>
+
+        <!-- Python Shell -->
+        <section>
+					<section data-transition="none" data-auto-animate>
+            <h2>Python Shell</h2>
+            <pre  style="font-size:40%" data-id="code"><code class="hljs bash" data-trim>$ python</code></pre>
+					</section>
+					<section data-transition="none" data-auto-animate>
+            <h2>Python Shell</h2>
+            <pre  style="font-size:40%" data-id="code"><code class="hljs bash" data-trim>$ python
+>>>
+          </code></pre>
+					</section>
+					<section data-transition="none" data-auto-animate>
+            <h2>Python Shell</h2>
+            <pre  style="font-size:40%" data-id="code"><code class="hljs bash" data-trim>$ python
+>>> a = 36
+          </code></pre>
+					</section>
+					<section data-transition="none" data-auto-animate>
+            <h2>Python Shell</h2>
+            <pre  style="font-size:40%" data-id="code"><code class="hljs bash" data-trim>$ python
+>>> a = 36
+>>>
+          </code></pre>
+					</section>
+					<section data-transition="none" data-auto-animate>
+            <h2>Python Shell</h2>
+            <pre  style="font-size:40%" data-id="code"><code class="hljs bash" data-trim>$ python
+>>> a = 36
+>>> b = 6
+          </code></pre>
+					</section>
+					<section data-transition="none" data-auto-animate>
+            <h2>Python Shell</h2>
+            <pre  style="font-size:40%" data-id="code"><code class="hljs bash" data-trim>$ python
+>>> a = 36
+>>> b = 6
+>>>
+          </code></pre>
+					</section>
+					<section data-transition="none" data-auto-animate>
+            <h2>Python Shell</h2>
+            <pre  style="font-size:40%" data-id="code"><code class="hljs bash" data-trim>$ python
+>>> a = 36
+>>> b = 6
+>>> print("The answer to life, the universe, and everything: {}".format(a+b))
+          </code></pre>
+					</section>
+					<section data-transition="none" data-auto-animate>
+            <h2>Python Shell</h2>
+            <pre  style="font-size:40%" data-id="code"><code class="hljs bash" data-trim>$ python
+>>> a = 36
+>>> b = 6
+>>> print("The answer to life, the universe, and everything: {}".format(a+b))
+The answer to life, the universe, and everything: 42
+>>>
+          </code></pre>
+					</section>
+					<section data-transition="none" data-auto-animate>
+            <h2>Python Shell</h2>
+            <pre  style="font-size:40%" data-id="code"><code class="hljs bash" data-trim>$ python
+>>> a = 36
+>>> b = 6
+>>> print("The answer to life, the universe, and everything: {}".format(a+b))
+The answer to life, the universe, and everything: 42
+>>> a+b
+          </code></pre>
+					</section>
+					<section data-transition="none" data-auto-animate>
+            <h2>Python Shell</h2>
+            <pre  style="font-size:40%" data-id="code"><code class="hljs bash" data-trim>$ python
+>>> a = 36
+>>> b = 6
+>>> print("The answer to life, the universe, and everything: {}".format(a+b))
+The answer to life, the universe, and everything: 42
+>>> a+b
+42
+>>>
+          </code></pre>
+					</section>
+				</section>
+
+
+
+
+
+
+        <section data-markdown data-transition="none">
+          <textarea data-template>
+            | Compiled | Interpreted |
+            | -------- | ----------- |
+            | C/C++    | Python      |
+            | Java    <!-- .element: class="fragment fade-right"   data-fragment-index="0" -->| JavaScript <!-- .element: class="fragment fade-left"   data-fragment-index="0" -->|
+            | Rust    <!-- .element: class="fragment fade-right"   data-fragment-index="1" -->| PHP        <!-- .element: class="fragment fade-left"   data-fragment-index="1" -->|
+            | Haskell <!-- .element: class="fragment fade-right"   data-fragment-index="2" -->| Ruby       <!-- .element: class="fragment fade-left"   data-fragment-index="2" -->|
+            - Bash is a  <!-- .element: class="fragment fade-up" data-fragment-index="3" -->
+            *command* language <!-- .element: class="fragment highlight-red"   data-fragment-index="5" -->
+            *interpreter* <!-- .element: class="fragment highlight-green"   data-fragment-index="4" -->
+          </textarea>
+        </section>
+
+        <section data-transition="none">
+          <section data-auto-animate data-markdown data-transition="none">
+            <textarea data-template>
+              ```bash
+              $ cd
+              ```
+            </textarea>
+          </section>
+          <section data-auto-animate data-markdown data-transition="none">
+            <textarea data-template>
+              ```bash
+              $ cd
+              ```
+              ```bash
+              $ pwd
+              ```
+            </textarea>
+          </section>
+          <section data-auto-animate data-markdown data-transition="none">
+            <textarea data-template>
+              ```bash
+              $ cd
+              ```
+              ```bash
+              $ pwd
+              ```
+              ```bash
+              $ printf "Hi there\n" 
+              ```
+            </textarea>
+          </section>
+          <section data-auto-animate data-markdown data-transition="none">
+            <textarea data-template>
+              ```bash
+              $ cd
+              ```
+              ```bash
+              $ pwd
+              ```
+              ```bash
+              $ printf "Hi there\n" 
+              ```
+              ```bash
+              $ valgrind
+              ```
+            </textarea>
+          </section>
+          <section data-auto-animate data-markdown data-transition="none">
+            <textarea data-template>
+              ```bash
+              $ cd
+              ```
+              ```bash
+              $ pwd
+              ```
+              ```bash
+              $ printf "Hi there\n" 
+              ```
+              ```bash
+              $ valgrind
+              ```
+              ```bash
+              $ firefox
+              ```
+            </textarea>
+          </section>
+          <section data-auto-animate data-markdown data-transition="none">
+            <textarea data-template>
+              ```bash
+              $ cd
+              ```
+              ```bash
+              $ pwd
+              ```
+              ```bash
+              $ printf "Hi there\n" 
+              ```
+              ```bash
+              $ valgrind
+              ```
+              ```bash
+              $ firefox
+              ```
+              ```bash
+              $ discord
+              ```
+            </textarea>
+          </section>
+          <section data-auto-animate data-markdown data-transition="none">
+            <textarea data-template>
+              ```bash
+              $ cd
+              ```
+              ```bash
+              $ pwd
+              ```
+              ```bash
+              $ printf "Hi there\n" 
+              ```
+              ```bash
+              $ valgrind
+              ```
+              ```bash
+              $ firefox
+              ```
+              ```bash
+              $ discord
+              ```
+              ```bash
+              $ steam
+              ```
+            </textarea>
+          </section>
+        </section>
+
+        <section data-transition="fade-in">
+          <section data-auto-animate>
+            <h2>Shells</h2>
+            <h5>MacOS</h5>
+              <ul>
+                <li>zsh</li>
+                <li>bash</li>
+              </ul> 
+          </section>
+          <section data-auto-animate>
+            <h2>Shells</h2>
+            <h5>Windows</h5>
+            <ul>
+              <li>Command Prompt</li>
+              <li>Windows PowerShell</li>
+            </ul> 
+          </section>
+          <section data-auto-animate>
+            <h2>Shells</h2>
+            <h5>Linux</h5>
+            <ul>
+              <li>bash</li>
+              <li>dash</li>
+              <li>zsh</li>
+              <li>ksh</li>
+            </ul>
+            <p class="fragment fade-in">Unix systems can do <pre><code>cat /etc/shells</code></pre></p>
+          </section>
+        </section>
+
+        <!-- This slide works to explain how the format of most shells is determined by POSIX -->
+        <section data-transition="none" data-background-iframe="https://standards.ieee.org/ieee/1003.1/7101/">
+					<h2 style="color: #fff;">POSIX IEEE 1003.1 (2017)</h2>
+          <img src="./POSIX-standard-2017.png" style="position:fixed;bottom:-150%;left:75%;border: 2px solid black;border-radius: 10px;"></img>
+				</section>
+
+        <section data-auto-animate>
+          <p><b>Most</b> POSIX Compliant Shell</p>
+        </section>
+        <section data-transition="convex">
+          <h6>Yash</h6>
+          <img src="./yash.jpg" class="r-stretch"></img>
+        </section>
+
+        <!--- 
+         _                         ___          
+        /  _ ._ _ ._ _  _.._  _| _  | .__|_.__  
+        \_(_)| | || | |(_|| |(_|_> _|_| ||_|(_) ---->
+
+        <section data-markdown>
+          <textarea data-template>
+            ## Bash Crash Course
+          </textarea>
+        </section>
+
+        <section data-transition="none">
+          <section data-markdown data-auto-animate>
+            <textarea data-template>
+              ### A few basic commands
+              ```bash
+              $ pwd
+              /home/workshop-user
+              $
+              ```
+            </textarea>
+          </section>
+          <section data-markdown data-auto-animate>
+            <textarea data-template>
+              ### A few basic commands
+              ```bash
+              $ ls
+              Downloads/  Documents/  notes.txt  picture.png
+              $
+              ```
+              ```bash
+              $ ls Downloads/
+              Bash-Workshop.jpg  Me-Playing-The-Saxophone.mp3  some-papers/
+              $ 
+              ```
+            </textarea>
+          </section>
+          <section data-markdown data-auto-animate>
+            <textarea data-template>
+              ### A few basic commands
+              ```bash
+              $ cd Downloads
+              $ ls 
+              Bash-Workshop.jpg  Me-Playing-The-Saxophone.mp3  some-papers/
+              $ pwd 
+              /home/workshop-user/Downloads/
+              $ cd ../
+              ```
+            </textarea>
+          </section>
+          <section data-markdown data-auto-animate>
+            <textarea data-template>
+              ### A few basic commands
+              ```bash
+              $ echo "Hi"
+              Hi
+              $
+              ```
+            </textarea>
+          </section>
+          <section data-markdown data-auto-animate>
+            <textarea data-template>
+              ### A few basic commands
+              ```bash
+              $ cat notes.txt
+              I need to get some new plates to replace the ones broken
+              The brain is the powerhouse of the cell
+              $ 
+              ```
+            </textarea>
+          </section>
+          <section data-markdown data-auto-animate>
+            <textarea data-template>
+              ### A few basic commands
+              ```bash
+              $ grep "powerhouse" notes.txt
+              The brain is the powerhouse of the cell
+              $ 
+              ```
+            </textarea>
+          </section>
+          <section data-markdown data-auto-animate>
+            <textarea data-template>
+              ### A few basic commands
+              ```bash
+              $ wc notes.txt
+              2 20 132
+              $ 
+              ```
+            </textarea>
+          </section>
+          <section data-markdown data-auto-animate>
+            <textarea data-template>
+              ### A few basic commands
+              ```bash
+              $ sed 's/brain/mitochondria/' notes.txt
+              I need to get some new plates to replace the ones broken
+              The mitochondria is the powerhouse of the cell
+              $ 
+              ```
+            </textarea>
+          </section>
+        </section>
+
+
+        <!--- 
+         _           __                  
+        |_) _. _|_  (_  _._o.__|_o._  _  
+        |_)(_|_>| | __)(_| ||_)|_|| |(_| 
+                            |         _| -->
+
+        <section data-transition="none" data-markdown>
+          <textarea data-template>
+            ## Variables
+            ```bash
+            # Implicitly defined
+            answer="42"
+            echo $answer
+            # Or better
+            # printf "%s\n" $answer
+            ```
+            ---
+            ## Variables
+            ```bash
+            # Equivalent
+            answer="42"
+            echo $answer
+            echo "$answer"
+            echo "${answer}"
+            ```
+          </textarea>
+        </section>
+
+				<section>
+					<section data-transition="none" data-auto-animate>
+            <h2>Control Logic</h2>
+            <p><b>If Statement: </b></p>
+            <pre data-id="code"><code class="hljs bash" data-trim>if COMMAND; then
+  # Insert more commands here
+fi</code></pre>
+					</section>
+					<section data-transition="none" data-auto-animate>
+            <h2>Control Logic</h2>
+            <p><b>If Statement: </b></p>
+            <pre data-id="code"><code class="hljs bash" data-trim>if COMMAND; then
+  # Insert more commands here
+fi
+
+if COMMAND; then
+  # Insert more commands here
+else
+  # Do otherwise
+fi</code></pre>
+					</section>
+					<section data-transition="none" data-auto-animate>
+            <h2>Control Logic</h2>
+            <p><b>If Statement: </b></p>
+            <pre data-id="code"><code class="hljs bash" data-trim>if COMMAND; then
+  # Insert more commands here
+fi
+
+if COMMAND; then
+  # Insert more commands here
+else
+  # Do otherwise
+fi
+
+if [[ 2 -eq 2 ]]; then
+  # Insert more commands here
+else
+  # Do otherwise
+fi</code></pre>
+					</section>
+					<section data-transition="none" data-auto-animate>
+            <h2>Control Logic</h2>
+            <p><b>And and Or: </b></p>
+            <pre data-id="code"><code class="hljs bash" data-trim>if [[ "$STRING1" == "$STRING2" && "$STRING1" == "$STRING3" ]]; then
+  printf "%s is equal to both strings" "$STRING1"
+fi</code></pre>
+					</section>
+					<section data-transition="none" data-auto-animate>
+            <h2>Control Logic</h2>
+            <p><b>And and Or: </b></p>
+            <pre data-id="code"><code class="hljs bash" data-trim>if [[ "$STRING1" == "$STRING2" || "$STRING1" == "$STRING3" ]]; then
+  printf "%s is equal to either string" "$STRING1"
+fi</code></pre>
+					</section>
+				</section>
+
+        <section data-transition="none" data-markdown>
+          <textarea data-template>
+            ### For loops: 
+            ```bash
+            for i in <item1> <item2> <item3>; do
+              # Insert more commands here
+              # $i iterates through the items
+            fi
+            ```
+          </textarea>
+        </section>
+
+        <section>
+          <section data-auto-animate data-markdown>
+            <textarea data-template>
+              ### Piping '|'
+              ```bash
+              $ ps aux
+              ```
+              ```bash
+              lfreche+ 4129510  0.0  0.0  19528  3924 ?        Ss   Mar11   0:00 -bash
+              lfreche+ 4129970  0.0  0.0  13412  3928 ?        S    Mar11   0:00 bash
+              key021   4130009  0.0  0.0 1437128 57112 ?       Sl   Feb26   0:39 python3 /home/key021/group/bin/aflowpy -unique ./Binary_Nitrides_POSCARS ./Binary_Nitrides_POSCARS_unique
+              lfreche+ 4130115  0.0  0.1 995328 145764 ?       Sl   Mar11   1:08 /home/lfrechette/.vscode-server/bin/1e790d77f81672c49be070e04474901747115651/node --dns-result-order=ipv4first /home/lfrechette/.vscode-server/bin/1e790d77f81672c49b
+              lfreche+ 4130152  0.0  0.0 795692 24876 ?        Sl   Mar11   0:02 /home/lfrechette/.vscode-server/bin/1e790d77f81672c49be070e04474901747115651/node /home/lfrechette/.vscode-server/bin/1e790d77f81672c49be070e04474901747115651/out/bo
+              aikeliu  4130207  0.2  0.0 5818856 15612 ?       Sl   Feb14 103:12 /home/aikeliu/hyperion-lib/dynamical-sdp/.stack-work/install/x86_64-linux-tinfo6-libc6-pre232/d78446221ff916ba982e2670820af44b68f1282e7cd9e8bfe0ffdc98ca25fc96/9.4.5/
+              key021   4136260  0.0  0.0 1840604 75284 ?       Sl   Feb26   0:48 python3 /home/key021/group/bin/aflowpy -unique ./Binary_Nitrides_POSCARS ./Binary_Nitrides_POSCARS_unique
+              rus043   4140541  0.0  0.0 202644  3176 ?        Sl   Feb27   0:00 /usr/libexec/dconf-service
+              key021   4145103  0.0  0.0 1840604 65448 ?       Sl   Feb26   0:36 python3 /home/key021/group/bin/aflowpy -unique ./Binary_Nitrides_POSCARS ./Binary_Nitrides_POSCARS_unique
+              key021   4145681  0.0  0.0 1775068 60696 ?       Sl   Feb26   0:43 python3 /home/key021/group/bin/aflowpy -unique ./Binary_Nitrides_POSCARS ./Binary_Nitrides_POSCARS_unique
+              root     4149236  0.0  0.0 136692  9664 ?        Ss   09:22   0:00 sshd: klupo [priv]
+              yryang   4149756  0.0  0.0 111100   884 pts/357  S+   09:22   0:00 srun --partition=gpu-shared --pty --account=csb176 --ntasks-per-node=10 --nodes=1 -t 01:00:00 --wait=0 --mem=128G --gpus=1 --export=ALL /bin/bash
+              key021   4150972  0.0  0.0 1775068 77812 ?       Sl   Feb26   0:47 python3 /home/key021/group/bin/aflowpy -unique ./Binary_Nitrides_POSCARS ./Binary_Nitrides_POSCARS_unique
+              key021   4155614  0.0  0.0 1234364 73640 ?       Sl   Feb26   0:51 python3 /home/key021/group/bin/aflowpy -unique ./Binary_Nitrides_POSCARS ./Binary_Nitrides_POSCARS_unique
+              root     4156782  0.0  0.0 141040  4456 ?        Ss   Feb16   0:00 sshd: jcardenas [priv]
+              jcarden+ 4156818  0.0  0.0 7994352 9156 ?        Sl   Feb16   7:51 sshd: jcardenas@notty
+              jcarden+ 4156854  0.0  0.0  33716  3336 ?        Ss   Feb16   1:11 /usr/libexec/openssh/sftp-server
+              root     4162585  0.0  0.0 136692  4824 ?        Ss   Feb23   0:00 sshd: ghafar [priv]
+              ghafar   4162616  0.2  0.0 103184 19772 ?        Ss   Feb23  75:19 /usr/lib/systemd/systemd --user
+              fgutier+ 2810605  0.0  0.0 136692  5468 ?        S    09:46   0:00 sshd: fgutierrez@pts/324
+              fgutier+ 2826236  0.0  0.0  12148  1176 pts/324  S+   09:46   0:00 grep --color=auto fgutierrez
+              ghafar   4162618  0.0  0.0 316460  2916 ?        S    Feb23   0:00 (sd-pam)
+              ghafar   4162630  0.0  0.0 136692  3240 ?        S    Feb23   0:00 sshd: ghafar@notty
+              ghafar   4162631  0.0  0.0  29412  2364 ?        Ss   Feb23   0:00 /usr/libexec/openssh/sftp-server
+              klupo    4162807  0.0  0.0 136824  6064 ?        S    09:23   0:00 sshd: klupo@pts/94
+              klupo    4163279  0.0  0.0  20896  5636 pts/94   Ss   09:23   0:00 -bash
+              ghafar   4163633  0.0  0.0  29412  2364 ?        Ss   Feb23   0:00 /usr/libexec/openssh/sftp-server
+              key021   4163964  0.0  0.0 1775068 64288 ?       Sl   Feb26   0:40 python3 /home/key021/group/bin/aflowpy -unique ./Binary_Nitrides_POSCARS ./Binary_Nitrides_POSCARS_unique
+              aikeliu  4164435  0.2  0.0 5751268 16456 ?       Sl   Feb14 103:59 /home/aikeliu/hyperion-lib/dynamical-sdp/.stack-work/install/x86_64-linux-tinfo6-libc6-pre232/d78446221ff916ba982e2670820af44b68f1282e7cd9e8bfe0ffdc98ca25fc96/9.4.5/
+              root     4165667  0.0  0.0 136692  5136 ?        Ss   Feb21   0:00 sshd: sz550 [priv]
+              sz550    4165744  0.0  0.0 136692  3580 ?        S    Feb21   0:00 sshd: sz550@notty
+              ```
+            </textarea>
+         </section>
+          <section data-auto-animate data-markdown>
+            <textarea data-template>
+              ### Piping '|'
+              ```bash
+              $ ps aux | grep fgutierrez # My user
+              ```
+              ```bash
+              root     2738523  0.0  0.0 136692 10348 ?        Ss   09:43   0:00 sshd: fgutierrez [priv]
+              fgutier+ 2741935  0.0  0.0 136692  5468 ?        S    09:44   0:00 sshd: fgutierrez@pts/294
+              root     2810416  0.0  0.0 136692 10348 ?        Ss   09:46   0:00 sshd: fgutierrez [priv]
+              fgutier+ 2810605  0.0  0.0 136692  5468 ?        S    09:46   0:00 sshd: fgutierrez@pts/324
+              fgutier+ 2826236  0.0  0.0  12148  1176 pts/324  S+   09:46   0:00 grep --color=auto fgutierrez
+              ```
+            </textarea>
+          </section>
+        </section>
+
+        <section>
+          <section data-auto-animate>
+            <h3>Writing a Bash Script</h3>
+            <pre><code>$ notepad++ script.sh</code></pre>
+            <pre><code>#!/bin/bash</code></pre>
+          </section>
+          <section data-auto-animate>
+            <h3>Writing a Bash Script</h3>
+            <pre><code>$ notepad++ script.sh</code></pre>
+            <pre><code>#!/usr/bin/env bash</code></pre>
+          </section>
+          <section data-auto-animate>
+            <h3>Writing a Bash Script</h3>
+            <pre><code>$ notepad++ script.sh</code></pre>
+            <pre><code>#!/usr/bin/env bash
+# Comment1: Today is a good day
+
+echo "Hi there"
+VAR1="21"
+...</code></pre>
+          </section>
+          <section data-auto-animate>
+            <h3>Writing a Bash Script</h3>
+            <pre><code>$ notepad++ script.sh
+$ bash script.sh
+Hi there
+...
+$</code></pre>
+            <pre><code>#!/usr/bin/env bash
+# Comment1: Today is a good day
+
+echo "Hi there"
+VAR1="21"
+...</code></pre>
+          </section>
+          <section data-auto-animate>
+            <h3>Writing a Bash Script</h3>
+            <pre><code>$ notepad++ script.sh
+$ chmod +x script.sh
+$ ./script.sh
+Hi there
+...
+$</code></pre>
+            <pre><code>#!/usr/bin/env bash
+# Comment1: Today is a good day
+
+echo "Hi there"
+VAR1="21"
+...</code></pre>
+          </section>
+        </section>
+
+        <section>
+          <h3>Scripts</h3>
+          <pre><code data-line-numbers="1" data-fragment-index="0">#!/bin/bash --
+
+
+control='ok'
+
+adddir() {
+  [[ -d $1 ]] || mkdir $1;
+}
+
+add_class() {
+
+  # make the directories for seperate classes
+  adddir Material/$1 && ln -sL ../../Material/$1 Classes/$1/Material
+  adddir Homework/$1 && ln -sL ../../Homework/$1 Classes/$1/Homework
+  adddir Textbooks/$1 && ln -sL ../../Textbooks/$1 Classes/$1/Textbooks
+
+
+  if [[ -f Material/$1/syllabus.pdf ]] then
+    # a little scuffed but looks for regex assuming only 1 will meet
+    ln -sL ../../Material/*yllabus*.pdf Material/$1/syllabus.pdf
+  fi
+}
+
+add_textbook() {
+  book=$(basename $1)
+  class=''
+
+  # Check that Classes is not empty
+  if [[ ! -d Classes/ ]] || [[ ! $(ls Classes/) ]]; then
+    printf 'You are missing some Classes to setup\n'
+    printf 'Please add that first\n'
+    exit
+  fi
+
+  # choose class
+  printf 'Choose a class: \n'
+  printf '     %s\n' $(ls -d Classes/*/ | cut -d \/ -f2) #, funny this prints like a loop for every element of these
+  printf ' : '
+  read -r class
+  if [[ ! -d Classes/$class ]]; then
+    printf 'That is not a class!\n'
+    printf 'Exiting...\n'
+    exit 1;
+  fi
+
+
+  mv -i $1 $HOME/Documents/School/Textbooks/
+  ln -s $HOME/Documents/School/Textbooks/${book} $(pwd -P)/Textbooks/$class/
+}
+
+usage() {
+  printf '%s:
+
+  Usage: %s [-c] [-h] [-t]
+
+  Options:
+    -c    Add a class
+    -h    Show help (this message)
+    -t    Add a textbook. Takes in a textbook, moves to ~/Documents/School/Textbooks
+          and then creates a soft link in the classes Textbook directory.
+          %s -t /path/to/textbook <class>
+
+' $0 $0 $0
+  exit 1
+}
+
+
+# check you are in the right place
+if [[ $(basename $(dirname $(pwd))) != 'School' ]]; then
+  printf 'You are not in the a Sem/Quarter directory!'
+  usage
+fi
+
+while getopts ":hct:" arg; do
+  case "${arg}" in
+    c) 
+      control=''
+      ;;
+    t) 
+      # give a way to read the next argument
+      if [[ -z ${OPTARG} ]]; then
+        usage
+      fi 
+      add_textbook ${OPTARG}
+      exit 0;
+      ;;
+    h) 
+      usage
+      ;;
+    *)
+      usage
+      ;;
+  esac
+done
+
+# Need to choose classes
+if [[ ! -d Classes/ ]] || [[ $control != 'ok' ]]; then
+  # add the directory if not existent
+  adddir Classes
+
+  # add classes with a prompt
+  printf 'Set a class %s, bro: ' $(whoami)
+  read -r control
+  adddir Classes/$control
+
+  while [[ $control != 'ok' ]]; do
+    printf 'Add another class or say "ok" to finish [ok]: ' 
+    # if read then overwrite control
+    read -r control
+    [[ $control != 'ok' ]] && adddir Classes/$control  
+  done
+
+else
+  printf 'Classes/ already exists. Perhaps you meant to use [-c] flag.\n'
+  usage
+fi
+
+
+# Add the dirs if they are not there yet
+adddir Material
+adddir Homework
+adddir Textbooks
+
+for i in $(ls -d Classes/*/ | cut -d \/ -f2); do
+
+  # check if class hasn't been edited
+  if [[ ! $(ls Classes/$i/) ]]; then
+    printf 'Adding class %s\n' $i
+    add_class $i
+  fi
+
+done
+
+printf 'done'</code></pre>
+        </section>
+
+        <section data-transition="none" data-background-iframe="https://devhints.io/bash" data-background>
+          <h6 style="color: #000;" ><a href="https://devhints.io/bash">https://devhints.io/bash</a></h6>
+          <p style="color: #000;">
+          - functions, associative arrays, string substition, etc. 
+          - Look at a good cheatsheet
+          </p>
+        </section>
+
+        <!-- 
+           __             
+          (_  _ ._ o.__|_ _ 
+          __)(_ |  ||_)|__> 
+                   |       -->
+
+        <section>
+          <h3>Simple Info</h3>
+          <pre><code>#!/bin/bash
+KERNEL="$(uname -r)"
+MEM="$(free -h | awk '/^Mem:/ {print $2}')"
+
+echo "Hostname: " $HOSTNAME
+echo "Username: " $USER
+echo "Kernel Version: " $KERNEL
+echo "Total Memory: " $MEM
+</code></pre>
+        </section>
+        <section>
+          <h3>Simple Number Comparison</h3>
+          <pre><code>#!/bin/bash
+age=18
+if [ "$age" -ge 18 ]; then
+    echo "You are an adult."
+else
+    echo "You are a minor."
+fi
+</code></pre>
+        </section>
+        <section>
+          <h3>Create a zip</h3>
+          <pre><code>#!/bin/bash
+backup_dir="/path/to/backup"
+source_dir="/path/to/source"
+zip -r "$backup_dir/$backup_file" "$source_dir"
+</code></pre>
+        </section>
+        <section>
+          <h3>Simple Find and Replace</h3>
+          <pre><code>#!/usr/bin/env bash
+# Demo 1
+
+BADNAME="myVar"
+GOODNAME="my_var"
+for i in $(find . -type f); do
+  if [[ "$i" != "./script.sh" ]]; then
+    if grep "$BADNAME"  $i &gt; /dev/null; then
+      echo "Found in the phrase in ${i}";
+      sed -i "s/$BADNAME/$GOODNAME/g" $i &gt; /dev/null;
+    fi
+  fi
+done
+</code></pre>
+        </section>
+
+        <!--- 
+         _                                          
+        |_  ._  _.._  _|o._  _  | | _ _.|_ o|o_|_   
+        |_><|_)(_|| |(_||| |(_| |_|_>(_||_)||| |_\/ 
+            |                _|                  / -->
+
+            <!--
+        <section>
+          <h3>TODO: rclone</h3>
+        </section>
+            -->
+
+        <section>
+          <section data-auto-animate>
+            <h5>Http Server</h5>
+            <pre><code>$ ls 
+Downloads/  Documents/  Videos/  ...</code></pre>
+          </section>
+          <section data-auto-animate>
+            <h5>Http Server</h5>
+            <pre><code>$ cd Downloads/</code></pre>
+          </section>
+          <section data-auto-animate>
+            <h5>Http Server</h5>
+            <pre><code>$ ls 
+Bash-Workshop.jpg  Me-Playing-The-Saxophone.mp3  some-papers/</code></pre>
+          </section>
+          <section data-auto-animate>
+            <h5>Http Server</h5>
+            <pre><code>$ ip a | grep inet
+inet 127.0.0.1/8 scope host lo
+inet6 ::1/128 scope host proto kernel_lo 
+inet 100.80.134.178/20 brd 100.80.143.255 scope global dynamic noprefixroute wlp2s0
+inet6 fe80::3977:6f8:fbce:e909/64 scope link noprefixroute</code></pre>
+            <pre><code>$ ifconfig a | grep inet</code></pre>
+          </section>
+          <section data-auto-animate>
+            <h5>Http Server</h5>
+            <pre><code>$ python -m http.server
+Serving HTTP on 0.0.0.0 port 8000 (http://0.0.0.0:8000/) ...
+127.0.0.1 - - [12/Mar/2024 10:28:39] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [12/Mar/2024 10:28:41] "GET /Me-Playing-The-Saxophone.mp3 HTTP/1.1" 200 -</code></pre>
+          </section>
+        </section>
+
+        <section>
+          <section data-transition="fade-up">
+            <h5>WGet</h5>
+            <p style="color: #000;" ><a href="https://cse.web.ucsd.edu/classes"><u>CSE Courses: cseweb.ucsd/classes</u></a></p>
+            <iframe class="r-stretch" style="background-color:white;" data-src="https://cseweb.ucsd.edu/classes" data-preload></iframe>
+          </section>
+          <section data-transition="fade-up">
+            <h5>WGet</h5>
+            <p style="color: #000;" ><a href="https://cseweb.ucsd.edu/classes/fa23/cse120-a/"><u>https://cseweb.ucsd.edu/classes/fa23/cse120-a/</u></a></p>
+            <iframe class="r-stretch" style="background-color:white;" data-src="https://cseweb.ucsd.edu/classes/fa23/cse120-a/" data-preload></iframe>
+          </section>
+          <section data-transition="fade-up">
+            <h5>WGet</h5>
+            <p style="color: #000;" ><a href="https://cseweb.ucsd.edu/classes/fa23/cse120-a/lectures/mem.pdf"><u>https://cseweb.ucsd.edu/classes/fa23/cse120-a/lectures/mem.pdf</u></a></p>
+            <iframe class="r-stretch" style="background-color:white;" data-src="https://cseweb.ucsd.edu/classes/fa23/cse120-a/lectures/mem.pdf" data-preload></iframe>
+          </section>
+          <section data-transition="fade-up" data-auto-animate>
+            <h5>WGet</h5>
+            <pre><code class="hljs bash" data-trim>$ cd Downloads
+$ ls
+Bash-Workshop.jpg  Me-Playing-The-Saxophone.mp3  some-papers
+$ <pre></code>
+          </section>
+          <section data-transition="fade-up" data-auto-animate>
+            <h5>WGet</h5>
+            <pre><code class="hljs bash" data-trim>$ cd Downloads
+$ ls
+Bash-Workshop.jpg  Me-Playing-The-Saxophone.mp3  some-papers
+$ wget https://cseweb.ucsd.edu/classes/fa23/cse120-a/lectures/mem.pdf</code></pre>
+          </section>
+          <section data-transition="fade-up" data-auto-animate>
+            <h5>WGet</h5>
+            <pre><code class="hljs bash" data-trim>$ cd Downloads
+$ ls
+Bash-Workshop.jpg  Me-Playing-The-Saxophone.mp3  some-papers
+$ wget https://cseweb.ucsd.edu/classes/fa23/cse120-a/lectures/mem.pdf
+--2024-03-12 11:27:28--  https://cseweb.ucsd.edu/classes/fa23/cse120-a/lectures/mem.pdf
+Resolving cseweb.ucsd.edu (cseweb.ucsd.edu)... 132.239.8.30
+Connecting to cseweb.ucsd.edu (cseweb.ucsd.edu)|132.239.8.30|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 2497853 (2.4M) [application/pdf]
+Saving to: ‘mem.pdf’
+
+mem.pdf                                                   100%[=====================================================================================================================================>]   2.38M  6.58MB/s    in 0.4s    
+
+2024-03-12 11:27:30 (6.58 MB/s) - ‘mem.pdf’ saved [2497853/2497853]
+$ clear </code></pre>
+          </section>
+          <section data-transition="fade-up" data-auto-animate>
+            <h5>WGet</h5>
+            <pre><code class="hljs bash" data-trim>$ ls 
+Bash-Workshop.jpg  Me-Playing-The-Saxophone.mp3  mem.pdf  some-papers
+$ </code></pre>
+          </section>
+
+          <section>
+            <h5>Get CSE Class Slides</h5>
+            <pre><code>#!/usr/bin/bash -x 
+location="cseweb.ucsd.edu/classes/fa23/cse120-a/lectures/"
+
+wget -r -np -R "index.html*" https://$location
+class_list=$(ls -rt ./$location)
+
+
+count=1
+for i in $class_list; do
+
+  mv -n ./$location/$i ./${count}_${i}
+  count=$((count + 1))
+
+done
+
+
+rm -rf cseweb.ucsd.edu
+</code></pre>
+          </section>
+        </section>
+        
+
+        <section>
+          <section data-auto-animate>
+            <h3>wget and http server</h3>
+            <ul>
+              <li><a>https://ieeeucsd.org/</a></li>
+              <li><a>https://supercomputing-club.sdsc.edu/</a></li>
+              <li><a>https://ieeeucsd.org/bash</a></li>
+            </ul> 
+          </section>
+          <section data-auto-animate>
+            <h3>wget and http server</h3>
+            <ul>
+              <li><a>https://ieeeucsd.org/</a></li>
+              <li><a>https://supercomputing-club.sdsc.edu/</a></li>
+              <li><a>https://ieeeucsd.org/bash</a></li>
+            </ul> 
+            <pre><code>$ mkdir temp/
+$ cd temp
+$ wget -k -r -p https://supercomputing-club.sdsc.edu/</code></pre>
+          </section>
+          <section data-auto-animate>
+            <h3>wget and http server</h3>
+            <ul>
+              <li><a>https://ieeeucsd.org/</a></li>
+              <li><a>https://supercomputing-club.sdsc.edu/</a></li>
+              <li><a>https://ieeeucsd.org/bash</a></li>
+            </ul> 
+            <pre><code>$ python -m http.server</code></pre>
+          </section>
+          <section data-auto-animate>
+            <h3>wget and http server</h3>
+            <ul>
+              <li><a>https://ieeeucsd.org/</a></li>
+              <li><a>https://supercomputing-club.sdsc.edu/</a></li>
+              <li><a>https://ieeeucsd.org/bash</a></li>
+            </ul> 
+            <pre><code>$ python -m http.server</code></pre>
+            <p>Try visiting <a>localhost:8000</a> if you completed these steps</p>
+          </section>
+        </section>
+
+        <section data-auto-animate>
+          <h3>Get every Canvas file from your course!</h3>
+          <aside class="notes">
+            Here's a script to download all files for a given Canvas course.
+            
+            You will need to get an API Token from Canvas for UCSD and the course ID.
+            To get the course ID, take the ID from the course's URL. Go to your browser,
+            open your course page, you will get a URL like this:
+
+            https://canvas.ucsd.edu/courses/123456
+
+            The ID is the number at the end. Place it at the end of the variable COURSE_ID below
+            with quotes.
+
+            For the API token, click on your profile picture, then click "Settings". After that,
+            create a "New Access Token" under the "Approved Integrations" section. Add a name
+            and expiration date. You will get a token on the dialog after that looks something
+            like this:
+
+            "12345~..."
+
+            Just put it down in the variable API_TOKEN below.
+
+            This uses "jq" to filter the JSON received into a readable format
+            for our script. '.[]' takes every element from the array and lists it line-by-line,
+            while the second part creates a string containing the fields from the request, comma-delimited.
+
+            Try running the command above on its own and experiment with different "jq" queries.
+            There are cheat sheets online you can find, it's cool!
+
+            For each line from the above query, we'll get the filename
+            and the URL. Then, for all of them, we will download the file
+            in the directory "files/" and just name it as-is on the page.
+
+            The line variable looks something like this: "NAME OF FILE,URL TO DOWNLOAD FILE"
+            Awk is a scripting language for text manipulation.
+            You can use to quickly parse comma-delimited values, which is what I do below.
+
+            Download the file and move it to the files directory. "-s" silences the progress bar
+            that shows up with cURL, you can remove the "-s" to see it.
+          </aside>
+          <pre><code data-line-numbers="1|3-4|6|8-14|9-12|13|16,22|17-18|19-21|24" style="padding: 0.50em; margin: 0.25em" data-fragment-index="0">#!/usr/bin/env bash
+
+COURSE_ID="123456"
+API_TOKEN="12345~..."
+
+mkdir -p files/
+
+FILES=$(
+	curl \
+	-X GET \
+	-H "Authorization: Bearer $API_TOKEN" \
+		https://canvas.ucsd.edu/api/v1/courses/$COURSE_ID/files | \
+		jq -r '.[] | "\(.filename),\(.url)"'
+)
+
+echo "$FILES" | while IFS= read -r line; do
+	FILENAME=$(echo $line | awk -F',' '{print $1}')
+	URL=$(echo $line | awk -F',' '{print $2}')
+	echo "Downloading $FILENAME..."
+	curl -s "$URL" -o "$FILENAME"
+	mv "$FILENAME" "files/$FILENAME"
+done
+
+echo "Done! All your files are in the 'files/' directory."
+</code></pre>
+        </section>
+        <!-- Some other possible slides
+        - yt-dlp use case
+        - Using rclone
+          - Editing text files in gdrive
+          - Plug ieee google suite    
+        - Download canvas material
+        - Instaloader
+        - Secondary Examples
+          - QR code creation?
+          - Instaloader download
+          - Come up with a hard pdf thing
+          - Counting stats for a git repo
+                    - ffmpeg, aria2c, ab-av1, largest file script (du -sh)-->
+
+
+        <!--- 
+         __                                    
+        (_    ._  _ .__ _ ._ _ ._   _|_o._  _  
+        __)|_||_)(/_|(_(_)| | ||_)|_||_|| |(_| 
+              |                |            _| -->
+        <section>
+          <h3>Bash in Supercomputing</h3>
+          <p>Most computers run some Unix derivative</p>
+        </section>
+        <section data-background-size="contain" data-background-image="./SCC22TechStack.png">
+          <p>Student Cluster Competition 2022 Tech Stack</p>
+        </section>
+        <section>
+          <h3>SCC Applications Coming Soon!</h3>
+        </section>
+        <section>
+          <h3>Our Site</h3>
+          <a>https://supercomputing-club.sdsc.edu/</a>
+            <iframe class="r-stretch" style="background-color:white;" data-src="https://supercomputing-club.sdsc.edu/posts/advent-of-scc-2023/advent-of-scc-epilogue/" data-preload></iframe>
+        </section>
+        <section>
+          <h3>Thank you</h3>
+          <a>https://ieeeucsd.org/</a>
+          <br>
+          <a>https://supercomputing-club.sdsc.edu/</a>
+          <br>
+          <a>https://www.sdsc.edu/</a>
+        </section>
+
+			
+      </div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+    <!--TODO include this in the repo as to not depend on npm-->
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script>
+      let typed = null;
+      const renderTyping = function(event) {
+        // Check if the current slide contains an element with id "BashSlide1"
+        if (event.currentSlide.querySelector('#BashSlide1')) {
+          // Initialize Typed.js on the element
+          typed = new Typed('#BashSlide1', {
+            strings: [
+              'IEEE@UCSD$ ls | sed s\'/',
+              'IEEE@UCSD$ ls | sed',
+              'IEEE@UCSD$ ls -a | s',
+              'IEEE@UCSD$ for i in',
+              'IEEE@UCSD$ for file in \$(ls \-1a)\; done',
+              'IEEE@UCSD$ for file in \$(ls \-1a)\; do\\\n> ',
+              'IEEE@UCSD$ for file in \$(ls \-1a)\; do\\\n> echo Replacing "Andrew" with "Mike"',
+              'IEEE@UCSD$ for file in \$(ls \-1a)\; do\\\n> printf "Replacing \\"Andrew\\" with \\"Mike\\" in file %s" $i',
+              'IEEE@UCSD$ for file in \$(ls \-1a)\; do\\\n> printf "Replacing \\"Andrew\\" with \\"Mike\\" in file %s\\n" $file\\n> sed \'s/Andrew/Mike/g\' $file',
+              'IEEE@UCSD$ for file in \$(ls \-1a)\; do\\\n> printf "Replacing \\"Andrew\\" with \\"Mike\\" in file %s\\n" $file\\n> sed -i \'s/Andrew/Mike/g\' $file\ndone \n^1000#forgot to acount for directories',
+              'IEEE@UCSD$ find . -exec sex -',
+              'IEEE@UCSD$ find . -exec sed -i \'s',
+              'IEEE@UCSD$ find . -type f exec sed -i \'s/Andrew/Mi',
+              'IEEE@UCSD$ find . -type f -exec sed -i \'s/Andrew/Mike\' {} ^1000\n `find: missing argument to -exec`',
+              'IEEE@UCSD$ find . -type f -exec sed -i \'s/Andrew/Mike\' {} \\;^3000\n # It is done, do again? ^4000 Y'
+              ],
+            typeSpeed: 50, // Typing speed in milliseconds
+            backSpeed: 20,
+            shuffle: false,
+            showCursor: false,
+            loop: true, // Whether to loop the animation
+          });
+        } else {
+          typed.destroy();
+        }
+      }
+      Reveal.addEventListener('ready', renderTyping);
+      Reveal.addEventListener('slidechanged', renderTyping);
+    </script>
+  </body>
+</html>

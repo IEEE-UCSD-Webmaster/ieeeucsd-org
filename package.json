@@ -32,6 +32,7 @@
     "devDependencies": {
         "@tailwindcss/forms": "^0.5.7",
         "@types/jquery": "^3.5.29",
+        "@types/node": "^20.11.30",
         "sass": "^1.72.0"
     }
 }
