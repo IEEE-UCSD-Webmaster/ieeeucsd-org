@@ -2,9 +2,9 @@
 import React from "react";
 import ReactDom from "react-dom";
 
-class Bash extends React.Component {
+class Main extends React.Component {
     render() {
-        const bashSlidesPath = "/bash/index.html";
+        const bashSlidesPath = "/bash_slides/index.html";
         return (
             <iframe
                 src={bashSlidesPath}
@@ -14,4 +14,4 @@ class Bash extends React.Component {
     }
 }
 
-export default Bash;
+export default Main;
