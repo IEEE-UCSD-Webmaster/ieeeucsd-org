@@ -1,47 +1,27 @@
-# Astro Starter Kit: Minimal
+# IEEE @ UCSD Website
 
-```sh
-npm create astro@latest -- --template minimal
-```
+## Deployment
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/minimal)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/minimal)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/minimal/devcontainer.json)
+This site is automatically deployed to netlify. Pushing to the `main` branch will trigger a rebuild and deploy.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Contributing
 
-## 🚀 Project Structure
+Please create a new branch for development (i.e. `[NAME]-dev`). Pushing directly to main is not advised, as changes will go straight into production. Once you are ready to merge your changes, create a pull request and request a review from a webmaster.
 
-Inside of your Astro project, you'll see the following folders and files:
+### Testing
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+To build the site, run `pnpm build`.
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+To view the site on your local network, run `pnpm dev`. View the site at [localhost:4321](http://localhost:4321).
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+The site will automatically rebuild on changes as long as the development server is running.
 
-Any static assets, like images, can be placed in the `public/` directory.
+### ENV Variables
 
-## 🧞 Commands
+Create a `.env` file in the root directory of the project. This file should contain the following variables:
 
-All commands are run from the root of the project, from a terminal:
+-   CALENDAR_API_KEY
+-   PUBLIC_DISCORD_WEBHOOK_LINK
+-   PUBLIC_SLACK_WEBHOOK_LINK
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+If you do not include this in the .env file, the site will give you an error.
