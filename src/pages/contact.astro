@@ -1,5 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
+const { PUBLIC_DISCORD_WEBHOOK_LINK } = import.meta.env;
+const { PUBLIC_SLACK_WEBHOOK_LINK } = import.meta.env;
 ---
 
 <Layout>
@@ -196,17 +198,15 @@ import Layout from "../layouts/Layout.astro";
         </form>
     </div>
 
-    <script>
-        const { PUBLIC_DISCORD_WEBHOOK_LINK } = import.meta.env;
-        const { PUBLIC_SLACK_WEBHOOK_LINK } = import.meta.env;
-
+    {/* @ts-ignore */}
+    <script
+        define:vars={{ PUBLIC_DISCORD_WEBHOOK_LINK, PUBLIC_SLACK_WEBHOOK_LINK }}
+    >
         document.addEventListener("DOMContentLoaded", function () {
-            const form = document.getElementById(
-                "contactForm"
-            ) as HTMLFormElement;
+            const form = document.getElementById("contactForm");
             const policyAgreeButton = document.querySelector(
                 'button[role="switch"]'
-            ) as HTMLElement;
+            );
             let policyAgreed = false;
 
             // Toggle privacy policy agreement
@@ -215,7 +215,7 @@ import Layout from "../layouts/Layout.astro";
                 this.setAttribute("aria-checked", policyAgreed.toString());
                 const indicator = this.querySelector(
                     'span[aria-hidden="true"]'
-                ) as HTMLElement;
+                );
                 if (policyAgreed) {
                     this.classList.replace("bg-gray-200", "bg-ieee");
                     indicator.classList.replace(
@@ -238,7 +238,7 @@ import Layout from "../layouts/Layout.astro";
                     return;
                 }
 
-                const formData = new FormData(form as HTMLFormElement);
+                const formData = new FormData(form);
                 const formProps = Object.fromEntries(formData);
 
                 const discordPayload = {

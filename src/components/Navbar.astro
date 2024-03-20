@@ -55,8 +55,8 @@ import navbarPages from "../data/navbarPages.json";
         </div>
     </div>
 </div>
-<script>
-    var hamburger = document.querySelector(".hamburger") as HTMLButtonElement;
+<script is:inline>
+    var hamburger = document.querySelector(".hamburger");
     var secondNav = document.querySelector("#secondNav");
     var navbarListItems = document.querySelectorAll("#navbar-list a");
     var body = document.body; // Get the body element
@@ -79,7 +79,7 @@ import navbarPages from "../data/navbarPages.json";
                 navbarListItems.forEach((item, index) => {
                     setTimeout(
                         () => {
-                            let htmlItem = item as HTMLElement;
+                            let htmlItem = item;
                             htmlItem.style.transition = "opacity 0.5s ease";
                             htmlItem.style.opacity = "1";
 
@@ -94,7 +94,7 @@ import navbarPages from "../data/navbarPages.json";
                 });
             } else {
                 navbarListItems.forEach((item, index) => {
-                    let htmlItem = item as HTMLElement;
+                    let htmlItem = item;
                     htmlItem.style.opacity = "0";
                 });
 
