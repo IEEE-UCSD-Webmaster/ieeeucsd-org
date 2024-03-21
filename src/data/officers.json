@@ -143,14 +143,14 @@
         "position": "Outreach Chair",
         "picture": "/officers/joshua.jpg",
         "email": "jmc008@ucsd.edu",
-        "type": ["Outreach"]
+        "type": []
     },
     {
         "name": "Ashlee Young",
         "position": "Outreach Chair",
         "picture": "/officers/temp.png",
         "email": "asy001@ucsd.edu",
-        "type": ["Outreach", "Events"]
+        "type": ["Events"]
     },
     {
         "name": "Marc Reta",
@@ -178,7 +178,7 @@
         "position": "Creative Director",
         "picture": "/officers/stephanie.jpg",
         "email": "sxxu@ucsd.edu",
-        "type": ["Internal", "Media"]
+        "type": ["Internal"]
     },
     {
         "name": "Jayendra Mangal",
@@ -206,14 +206,14 @@
         "position": "Marketing Chair",
         "picture": "/officers/kevin.jpg",
         "email": "kjchang@ucsd.edu",
-        "type": ["Internal", "Media"]
+        "type": ["Internal"]
     },
     {
         "name": "Vuong Bui",
         "position": "Marketing Chair",
         "picture": "/officers/vuong.jpg",
         "email": "v2bui@ucsd.edu",
-        "type": ["Internal", "Media"]
+        "type": ["Internal"]
     },
     {
         "name": "Joyce Zhou",
@@ -228,5 +228,12 @@
         "picture": "/officers/kate.jpg",
         "email": "yuz235@ucsd.edu",
         "type": ["Internal"]
+    },
+    {
+        "name": "Khai Vu",
+        "position": "Supercomputing Chair",
+        "picture": "/officers/khai.jpg",
+        "email": "k6vu@ucsd.edu",
+        "type": ["Projects"]
     }
 ]
