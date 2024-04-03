@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
-import Event from "./Event"; // Adjust the import path as necessary
+import Event from "./Event";
 
 const EventList = ({ CALENDAR_API_KEY }) => {
-    const [events, setEvents] = useState([]); // Use an array to store multiple events
+    const [events, setEvents] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
