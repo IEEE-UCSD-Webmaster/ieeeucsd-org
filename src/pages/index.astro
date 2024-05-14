@@ -4,6 +4,7 @@ import OfficerCard from "../components/react/OfficerCard.jsx";
 import Officers from "../data/officers.json";
 import OfficerTabs from "../components/react/OfficerTabs.jsx";
 import "iconify-icon";
+import { Icon } from "astro-icon/components";
 ---
 
 <html lang="en">
@@ -22,26 +23,26 @@ import "iconify-icon";
                     >
                         Join the 2nd largest IEEE student branch in the US!
                     </div>
-                    <div class="scale-[600%] mt-10 space-x-2">
+                    <div class="scale-[600%] mt-10 space-x-2 flex flex-row">
                         <a href="https://discord.gg/XxfjqZSjca">
-                            <iconify-icon
-                                icon="ic:baseline-discord"
+                            <Icon
+                                name="ic:baseline-discord"
                                 class="duration-500 transition hover:scale-125 scale-100 text-white hover:text-[#5562ea]"
-                            ></iconify-icon>
+                            />
                         </a>
 
                         <a href="https://www.facebook.com/ieeeucsd">
-                            <iconify-icon
-                                icon="ic:baseline-facebook"
+                            <Icon
+                                name="ic:baseline-facebook"
                                 class="duration-500 transition hover:scale-125 scale-100 text-white hover:text-[#0863f7]"
-                            ></iconify-icon>
+                            />
                         </a>
 
                         <a href="https://www.instagram.com/ieee.ucsd">
-                            <iconify-icon
-                                icon="mdi:instagram"
+                            <Icon
+                                name="mdi:instagram"
                                 class="duration-500 transition hover:scale-125 scale-100 text-white hover:text-[#ff68cd]"
-                            ></iconify-icon>
+                            />
                         </a>
                     </div>
                 </div>
