@@ -16,6 +16,10 @@
         "url": "/committees"
     },
     {
+        "name": "LINKTREE",
+        "url": "https://linktr.ee/ieeeucsd"
+    },
+    {
         "name": "CONTACT US",
         "url": "/contact"
     }
