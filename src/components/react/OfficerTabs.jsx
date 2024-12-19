@@ -2,6 +2,11 @@ import React, { useState } from "react";
 import OfficerCard from "./OfficerCard.jsx";
 import { AnimatePresence } from "framer-motion";
 
+const getImageWithFallback = (imagePath, useSpecialImage) => {
+    if (useSpecialImage) return "/officers/zarif.jpg";
+    return imagePath;
+};
+
 const OfficerTabs = ({ officers }) => {
     const [selectedType, setSelectedType] = useState("All");
     const [mustahsinClickCount, setMustahsinClickCount] = useState(0);
@@ -54,11 +59,10 @@ const OfficerTabs = ({ officers }) => {
                     <OfficerCard
                         key={officer.email}
                         {...officer}
-                        picture={
+                        picture={getImageWithFallback(
+                            officer.picture,
                             useMustahsinImage
-                                ? "/officers/mustahsin.jpg"
-                                : officer.picture
-                        }
+                        )}
                         onMustahsinClicked={handleMustahsinClicked}
                     />
                 ))}

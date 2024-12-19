@@ -7,11 +7,25 @@ const OfficerCard = ({
     email,
     onMustahsinClicked,
 }) => {
+    const [imageSrc, setImageSrc] = React.useState(
+        "https://placehold.co/500?text=IEEE%20@%20UCSD"
+    );
+
     const handleImageClick = () => {
         if (name === "Mustahsin Zarif") {
             onMustahsinClicked();
         }
     };
+
+    React.useEffect(() => {
+        if (picture) {
+            const img = new Image();
+            img.onload = () => {
+                setImageSrc(picture);
+            };
+            img.src = picture;
+        }
+    }, [picture]);
 
     return (
         <div
@@ -19,9 +33,10 @@ const OfficerCard = ({
         >
             <img
                 className="w-26 h-auto sm:h-64 object-cover rounded-3xl cursor-pointer"
-                src={picture}
+                src={imageSrc}
                 alt={`Picture of ${name}`}
                 onClick={handleImageClick}
+                loading="eager"
             />
             <div className="p-4">
                 <h3 className="text-lg font-bold text-center">{name}</h3>
