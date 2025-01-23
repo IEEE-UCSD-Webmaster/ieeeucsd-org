@@ -2,6 +2,7 @@
     "name": "IEEE_UCSD_WEBSITE",
     "type": "module",
     "version": "1.2.0",
+    "packageManager": "bun@1.2.0",
     "scripts": {
         "dev": "astro dev",
         "start": "node dist/server/entry.mjs",
