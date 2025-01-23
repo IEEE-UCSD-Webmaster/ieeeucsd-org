@@ -1,8 +1,8 @@
-
 [phases.setup]
 commands = [
     "npm install -g bun"
 ]
+nixPkgs = ["bun"]
 
 [phases.install]
 commands = [
@@ -14,5 +14,5 @@ commands = [
     "bun run build"
 ]
 
-[phases.start]
-commands = ["bun run start"]
+[start]
+cmd = "bun run start"
