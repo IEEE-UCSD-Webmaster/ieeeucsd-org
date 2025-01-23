@@ -2,17 +2,3 @@
 nixPkgs = ["nodejs_18", "bun"]
 aptPkgs = ["curl", "wget"]
 
-[phases.install]
-commands = [
-    "bun install"
-]
-
-[phases.build]
-commands = [
-    "bun run build"
-]
-
-[phases.start]
-commands = [
-    "bun run start"
-]
