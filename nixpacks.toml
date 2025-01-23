@@ -1,8 +1,6 @@
 [phases.setup]
-commands = [
-    "npm install -g bun"
-]
-nixPkgs = ["bun"]
+nixPkgs = ["nodejs_18", "bun"]
+aptPkgs = ["curl", "wget"]
 
 [phases.install]
 commands = [
@@ -14,5 +12,7 @@ commands = [
     "bun run build"
 ]
 
-[start]
-cmd = "bun run start"
+[phases.start]
+commands = [
+    "bun run start"
+]
