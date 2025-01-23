@@ -1,6 +1,7 @@
 [phases.setup]
 pkgs = ["bun"]
 cmds = ["bun --version"]
+providers = ["bun"]
 
 [phases.install]
 cmds = ["bun install"]
