@@ -1,17 +1,23 @@
+# nixpacks.toml
 [phases.setup]
+# Ensure required dependencies are installed
 commands = [
+  "apt-get update && apt-get install -y unzip curl",
   "curl -fsSL https://bun.sh/install | bash",
-  "export PATH=$HOME/.bun/bin:$PATH"
+  "export PATH=$HOME/.bun/bin:$PATH",
+  "bun install"
 ]
 
 [phases.build]
+# Install dependencies and build the application using Bun
 commands = [
-  "bun install",
   "bun build"
 ]
 
 [phases.start]
+# Start the application using Bun
 commands = ["bun start"]
 
 [environment]
+# Ensure Bun is available in the runtime
 PATH = "$HOME/.bun/bin:$PATH"
