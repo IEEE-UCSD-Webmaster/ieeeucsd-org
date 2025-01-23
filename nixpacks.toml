@@ -1,5 +1,5 @@
 [phases.setup]
-pkgs = ["bun"]
+nixPkgs  = ["nodejs", "bun"]
 cmds = ["bun --version"]
 providers = ["bun"]
 
