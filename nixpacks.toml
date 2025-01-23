@@ -1,0 +1,17 @@
+[phases.install]
+commands = [
+  "npm install -g bun"
+]
+
+[phases.setup]
+commands = [
+    "bun install",
+]
+
+[phases.build]
+commands = [
+    "bun build",
+]
+
+[phases.start]
+commands = ["bun run start"]
