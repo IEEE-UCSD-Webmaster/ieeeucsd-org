@@ -1,11 +1,12 @@
-[phases.install]
-commands = [
-  "npm install -g bun"
-]
 
 [phases.setup]
 commands = [
-    "bun install",
+    "npm install -g bun"
+]
+
+[phases.install]
+commands = [
+    "bun install"
 ]
 
 [phases.build]
