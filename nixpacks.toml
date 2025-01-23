@@ -11,7 +11,7 @@ commands = [
 
 [phases.build]
 commands = [
-    "bun build",
+    "bun run build"
 ]
 
 [phases.start]
