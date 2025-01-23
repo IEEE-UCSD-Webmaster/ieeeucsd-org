@@ -1,23 +1,19 @@
-# nixpacks.toml
 [phases.setup]
-# Ensure required dependencies are installed
 commands = [
   "apt-get update && apt-get install -y unzip curl",
   "curl -fsSL https://bun.sh/install | bash",
-  "echo 'export PATH=$HOME/.bun/bin:$PATH' >> /etc/profile"
+  "echo 'export PATH=$HOME/.bun/bin:$PATH' >> /etc/profile",
+  
+  "source /etc/profile && bun install",
 ]
 
 [phases.build]
-# Use Bun to install dependencies and build the application
 commands = [
-  "source /etc/profile && bun install",
   "source /etc/profile && bun build"
 ]
 
 [phases.start]
-# Start the application using Bun
-commands = ["source /etc/profile && bun start"]
+commands = ["source /etc/profile && bun run dist/server/entry.mjs"]
 
 [environment]
-# Ensure Bun is available in runtime
 PATH = "$HOME/.bun/bin:$PATH"
