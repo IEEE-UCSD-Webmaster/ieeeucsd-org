@@ -13,7 +13,7 @@ commands = [
 ]
 
 [phases.start]
-commands = ["source /etc/profile && bun run dist/server/entry.mjs"]
+commands = ["source /etc/profile && bun run start"]
 
 [environment]
 PATH = "$HOME/.bun/bin:$PATH"
