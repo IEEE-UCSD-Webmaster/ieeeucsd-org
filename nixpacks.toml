@@ -1,7 +1,6 @@
 [phases.setup]
-nixPkgs  = ["nodejs", "bun"]
+pkgs = ["bun"]
 cmds = ["bun --version"]
-providers = ["bun"]
 
 [phases.install]
 cmds = ["bun install"]
@@ -14,3 +13,5 @@ cmd = "bun run start"
 
 [variables]
 NODE_PACKAGE_MANAGER = "bun"
+NIXPACKS_NO_INSTALL_NODE = "1"
+NIXPACKS_PKGS = "bun"
