@@ -10,7 +10,7 @@ const EventList = ({ CALENDAR_API_KEY }) => {
     useEffect(() => {
         const apiKey = CALENDAR_API_KEY;
         const calendarId =
-            "666sh64sku5n29qv2a2f4598jc@group.calendar.google.com";
+            "c_2bips5sphnrpa8ui4ike6k4b1s@group.calendar.google.com";
         const userTimeZone = "America/Los_Angeles";
 
         const loadGapiAndListEvents = () => {
