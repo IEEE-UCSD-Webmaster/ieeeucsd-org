@@ -4,20 +4,20 @@
 commands = [
   "apt-get update && apt-get install -y unzip curl",
   "curl -fsSL https://bun.sh/install | bash",
-  "export PATH=$HOME/.bun/bin:$PATH",
-  "bun install"
+  "echo 'export PATH=$HOME/.bun/bin:$PATH' >> /etc/profile"
 ]
 
 [phases.build]
-# Install dependencies and build the application using Bun
+# Use Bun to install dependencies and build the application
 commands = [
-  "bun build"
+  "source /etc/profile && bun install",
+  "source /etc/profile && bun build"
 ]
 
 [phases.start]
 # Start the application using Bun
-commands = ["bun start"]
+commands = ["source /etc/profile && bun start"]
 
 [environment]
-# Ensure Bun is available in the runtime
+# Ensure Bun is available in runtime
 PATH = "$HOME/.bun/bin:$PATH"
